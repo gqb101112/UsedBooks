@@ -1,0 +1,42 @@
+﻿@model IEnumerable< UsedBooks.Models.Book>
+        
+@{
+    
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+
+<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+     <h3>
+      <a id="allbooks" name="allbooks"></a>
+      最新添加图书
+      </h3>
+
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+     	<tbody>
+          <tr>
+                <td colspan="2">
+                    @foreach (var book in Model)
+                    { 
+                        <div class="book_frame">
+                            <div class="book_author">@book.Author 著</div>
+                            <div class="book_text"><img width="16" height="11" src="../../Content/images/head_06.gif" style="float:right; margin-bottom:20px;"/></div>
+                            <div class="book_title">
+                              @Html.ActionLink(book.Name, "Order", new { id=book.BookID})   </div>
+                             <div class="book_title">
+                               @book.Publish  出版社</div>
+                            <div class="book_price">
+                                <div class="now">@book.Price 元</div>
+                            </div>
+                        </div>
+                    }
+                    
+                    
+                </td>
+          </tr>
+          <tr>
+          </tr>
+      </tbody>
+       </table>
+
