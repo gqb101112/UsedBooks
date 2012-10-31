@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+  <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
     <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
     <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
     <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />

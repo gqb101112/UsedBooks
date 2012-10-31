@@ -123,6 +123,7 @@
     <Compile Include="Models\BookNeed.cs">
       <DependentUpon>UsedBooks.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookShop.cs" />
     <Compile Include="Models\BookUp.cs" />
     <Compile Include="Models\Comment.cs">
       <DependentUpon>UsedBooks.tt</DependentUpon>
@@ -371,6 +372,7 @@
     <Content Include="Views\Shared\_AllBookPage.cshtml" />
     <Content Include="Views\Shared\_HomePage1.cshtml" />
     <Content Include="Views\Home\_Index.cshtml" />
+    <Content Include="Views\Home\BookShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -380,6 +382,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

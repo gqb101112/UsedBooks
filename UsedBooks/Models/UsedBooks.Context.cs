@@ -16,10 +16,10 @@ namespace UsedBooks.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class UsedBookEntities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public UsedBookEntities1()
+            : base("name=UsedBookEntities1")
         {
         }
     

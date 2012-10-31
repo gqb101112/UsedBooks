@@ -11,7 +11,7 @@ namespace UsedBooks.Controllers
 {   
     public class BooksManagerController : Controller
     {
-        Entities Usedb = new Entities();
+        UsedBookEntities1 Usedb = new UsedBookEntities1();
         //
         // GET: /BooksManager/
         

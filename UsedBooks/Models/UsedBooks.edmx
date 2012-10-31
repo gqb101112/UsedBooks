@@ -229,7 +229,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
           <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
           <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
@@ -475,7 +475,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="UsedBookModel.Book">
               <MappingFragment StoreEntitySet="Book">

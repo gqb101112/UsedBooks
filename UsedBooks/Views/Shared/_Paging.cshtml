@@ -1,13 +1,13 @@
 ﻿<p>
     @if (Model.HasPreviousPage)
     {
-        @Html.ActionLink("<< First", "Index", new
+        @Html.ActionLink("<< 首页", "Index", new
    {
        page = 1,
        sortOrder = ViewBag.CurrentSortOrder
    })
         @Html.Raw("&nbsp;");
-        @Html.ActionLink("< Prev", "Index", new
+        @Html.ActionLink("< 上一页", "Index", new
    {
        page = Model.PageNumber - 1,
        sortOrder =
@@ -16,20 +16,20 @@
     }
     else
     {
-        @:<< First
+        @:<< 首页
         @Html.Raw("&nbsp;");
-        @:< Prev
+        @:< 上一页
     }
     &nbsp;&nbsp;
     @if (Model.HasNextPage)
     {
-        @Html.ActionLink("Next >", "Index", new
+        @Html.ActionLink("下一页 >", "Index", new
    {
        page = Model.PageNumber + 1,
        sortOrder = ViewBag.CurrentSortOrder
    })
         @Html.Raw("&nbsp;");
-        @Html.ActionLink("Last >>", "Index", new
+        @Html.ActionLink("末页 >>", "Index", new
    {
        page = Model.PageCount,
        sortOrder = ViewBag.CurrentSortOrder
@@ -37,8 +37,8 @@
     }
     else
     {
-        @:Next >
+        @:下一页 >
         @Html.Raw("&nbsp;")
-        @:Last >>
+        @:末页 >>
     }
 </p>

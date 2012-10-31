@@ -5,11 +5,13 @@
     Layout = "~/Views/Shared/_HomePage1.cshtml";
     if (TempData["phone"] != null)
     {
-           <span style:"color:#FF3300">预订成功，请尽快联系卖家。卖家手机号码 @TempData["phone"]</span>
+           <span style:"color:#FF3300; font-size:larger">预订成功，请尽快联系卖家。卖家手机号码 @TempData["phone"]</span>
             @Html.ActionLink("返回", "Index", "Home");
     }
-    
+
 }
+
+
 
 <!--<h2>Order</h2>
 @using (Html.BeginForm("Order", "Home", FormMethod.Post))
@@ -153,7 +155,7 @@
                     <td>该书来自：</td>
                     <td></td>
                     <td>书主：</td>
-                    <td></td>
+                    <td>@Html.DisplayFor(m=>m.User)</td>
                 </tr>
                 <tr>
 

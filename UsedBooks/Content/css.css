@@ -382,7 +382,7 @@ form, form p {
     width: 30px;
 }
 .shop_0 {
-    background: url("../images/shop0.gif") no-repeat scroll 0 0 transparent;
+    background: url("../Content/images/shop0.gif") no-repeat scroll 0 0 transparent;
     float: left;
     height: 250px;
     margin: 10px 2px;
@@ -390,7 +390,7 @@ form, form p {
     width: 205px;
 }
 .shop_1 {
-    background: url("../images/shop1.gif") no-repeat scroll 0 0 transparent;
+    background: url("../Content/images/shop1.gif") no-repeat scroll 0 0 transparent;
     float: left;
     height: 250px;
     margin: 10px 2px;
@@ -398,7 +398,7 @@ form, form p {
     width: 205px;
 }
 .shop_2 {
-	background: url("../images/shop2.gif") no-repeat scroll 0 0 transparent;
+	background: url("../Content/images/shop2.gif") no-repeat scroll 0 0 transparent;
 	float: left;
 	height: 250px;
 	margin: 10px 2px;

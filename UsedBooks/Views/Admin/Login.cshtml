@@ -9,8 +9,8 @@
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-<!--@Html.ValidationSummary(true, "登录不成功。请更正错误并重试。")
+<link href="@Url.Content("~/Content/css.css")"rel="stylesheet" type="text/css" />
+<@Html.ValidationSummary(true, "登录不成功。请更正错误并重试。")
 @using (Html.BeginForm("Login","Admin",new { ReturnUrl = Request.QueryString["ReturnUrl"] },FormMethod.Post)) {
     <div>
         <fieldset>
@@ -41,82 +41,5 @@
                 <input type="submit" value="登录" />
             </p>
         </fieldset>
-    </div>
-}-->
-@Html.ValidationSummary(true, "登录不成功。请更正错误并重试。")
-@using (Html.BeginForm("Login", "Admin", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
-{
-    <div id="left">
-        <div class="left_articles">
-            <h3>进入我的书店</h3>
-            <table width="100%" border="0">
-                <tbody>
-                    <tr>
-                        <td width="47%">
-                            <div class="shop_1">
-                                <div class="shop_content">
-                                    <table width="100%" height="71%" cellspacing="0" cellpadding="0" border="0">
-                                        <tbody>
-                                            <tr>
-                                                <td height="93">
-                                                    <label></label>
-                                                    <label>您还没有登录自己的书店,请在下方登录、注册或逛逛</label>
-                                                </td>
-                                                <td height="93"></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="70%" height="30" bgcolor="#FFFFD0">帐户
-                                                <div class="editor-field">
-                                                    @Html.TextBoxFor(m => m.Email)
-                                                    @Html.ValidationMessageFor(m => m.Email)
-                                                </div>
-                                                </td>
-                                                <td width="30%" bgcolor="#FFFFD0" rowspan="2">
-                                                    <label>
-                                                        <input type="image" align="middle" src="../Content/images/lvshe_08.gif" value="提交" name="Submit4">
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height="36" bgcolor="#FFFFD0">密码
-                                                <div class="editor-field">
-                                                    @Html.PasswordFor(m => m.Password)
-                                                    @Html.ValidationMessageFor(m => m.Password)
-                                                </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="shop_name">
-                                    <a href="bookshop.php?shop_id="></a>
-                                    <label></label>
-                                    <div style="background: url(../Content/images/reg.jpg)">@Html.ActionLink("注册", "Register", "Admin")</div>
-                                    <div style="background: url(../Content/images/gg.jpg)">@Html.ActionLink("逛逛", "Register", "Admin")</div>
-                                </div>
-
-                            </div>
-                        </td>
-                        <td width="53%" valign="top">
-                            <p align="center">
-                                <img width="128" height="128" alt="" src="../Content/images/HeinH17.jpg">
-                            </p>
-                            <p>别害怕，你只不过还没登录书店而已，<= 左边进 哈哈</p>
-                            <p>
-                                还没有书店？ 还没有？ 现在就去
-                            @Html.ActionLink("开店", "Register", "Admin")
-                                吧 >>>>
-                            </p>
-                            <p>开店后您将拥有一个eke靓店，您只要将自己不用的书简单的登记在自己的书店里，就等着eker们去联系你吧，再也不用顶贴，再也不用摆地摊就能处理掉您大量的旧书，利己利人，何乐不为。</p>
-                            <p>
-
-                                <strong>@Html.ActionLink(">>现在就去开店>>", "Register", "Admin")</strong>
-
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 }

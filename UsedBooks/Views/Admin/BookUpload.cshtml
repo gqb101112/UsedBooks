@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "书本上传";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
 }
 
 <h2>鼠标上传</h2>
@@ -17,8 +17,57 @@
     <div>
         <fieldset>
             <legend>书本信息</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width:7%">书名：</td>
+                        <td style="width:38%">@Html.TextBoxFor(m => m.Name)</td>
+                        <td style="width:10%">现价：</td>
+                        <td style="width:45%"> @Html.TextBoxFor(m=>m.Price)</td>
+                    </tr>
+                    <tr >
+                        <td>作者：</td>
+                        <td> @Html.TextBoxFor(m => m.Author)</td>
+                        <td>出版社：</td>
+                        <td>@Html.TextBoxFor(m => m.Publish)</td>
+                    </tr>
+                    <tr>
+                        <td>新旧程度：</td>
+                        <td>@Html.DropDownListFor(x=>x.OldLevel,new SelectList(new string[]{"10成","9成","8成","7成","6成","5成","4成","3成"})) </td>
+                        <td>
+                            书籍类型1:
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(x => x.Category, new SelectList(new string[] { "工商管理学院", "旅游与城市管理学院", "财务与会计学院"
+,"统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院"}))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            数量：
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m=>m.TotalNum)
+                        </td>
+                        <td>书籍类型2：</td>
+                        <td>
+                             @Html.DropDownListFor(x => x.Categories, new SelectList(new string[] { "军事类","计算机","文史类"}))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="增加" />
+                        </td>
+                        <td></td>
+                        <td>
+                            <input type="reset" value="充值" />
+                        </td>
+                        <td></td>
+                    </tr>
 
-            <div class="editor-label">
+                </tbody>
+            </table>
+          <!--  <div class="editor-label">
                书名
             </div>
             <div class="editor-field">
@@ -78,7 +127,7 @@
             </div>
             <p>
                 <input type="submit" value="增加" />
-            </p>
+            </p>-->
         </fieldset>
     </div>
 }
