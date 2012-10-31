@@ -46,7 +46,7 @@
                             </table>
                         </div>
                         <div class="shop_name">
-                            @Html.ActionLink(shop.User, "Order", new { id=shop.UserID})
+                            @Html.ActionLink(shop.User, "ShopDetail", new { id=Convert.ToInt32(shop.UserID),Uname=shop.User,date=shop.OpenTime})
 
                             </div>
                     </div>

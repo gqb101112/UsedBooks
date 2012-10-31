@@ -50,8 +50,13 @@ namespace UsedBooks.Controllers
                 order.Publish=b.Publish;
                 var user = from use in Usedb.User
                            where use.UserID == b.UserID
-                           select use.UserName;
-                order.User = user.ToString();
+                           select use;
+                string name = "";
+                foreach (User u in user)
+                {
+                    name = u.UserName;
+                }
+                order.User = name;
                 order.Author=b.Author;
                 order.TotalNum=b.TotalNum.ToString();
 
@@ -136,7 +141,30 @@ namespace UsedBooks.Controllers
             
             return PartialView(shops);
         }
-       
+        public ActionResult ShopDetail(int id,string Uname,string date)
+        {
+            var books = from b in Usedb.Book
+                        where b.UserID ==id 
+                        select b;
+            List<ShopDetaill> shops = new List<ShopDetaill>();
+            foreach (Book b in books)
+            {
+                ShopDetaill shop = new ShopDetaill();
+                shop.Autnor = b.Author;
+                shop.BookID = b.BookID.ToString();
+                shop.BookName = b.Name;
+                shop.BookNum = books.Count().ToString();
+                shop.OpenDate = date;
+                shop.Price = b.Price;
+                shop.Publish = b.Publish;
+                shop.ShopName = Uname + "的书店";
+                shop.UserName = Uname;
+                shops.Add(shop);
+
+            
+            }
+            return PartialView(shops);
+        }
         
     }
 }

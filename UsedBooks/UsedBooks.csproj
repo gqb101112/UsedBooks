@@ -137,6 +137,7 @@
       <DependentUpon>UsedBooks.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\POrder.cs" />
+    <Compile Include="Models\ShopDetaill.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>UsedBooks.tt</DependentUpon>
     </Compile>
@@ -172,6 +173,7 @@
     <Content Include="Common\LoginOut.ascx" />
     <Content Include="Content\css.css" />
     <Content Include="Content\images\back.gif" />
+    <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\book1.gif" />
     <Content Include="Content\images\circle.gif" />
     <Content Include="Content\images\comment.gif" />
@@ -373,6 +375,7 @@
     <Content Include="Views\Shared\_HomePage1.cshtml" />
     <Content Include="Views\Home\_Index.cshtml" />
     <Content Include="Views\Home\BookShop.cshtml" />
+    <Content Include="Views\Home\ShopDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
