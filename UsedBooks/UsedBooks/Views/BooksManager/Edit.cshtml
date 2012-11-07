@@ -1,0 +1,86 @@
+﻿@model UsedBooks.Models.Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("Edit","BooksManager",FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>书本信息修改</legend>
+
+        
+
+        <div class="editor-label">
+            书名
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            作者
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.Author)
+            @Html.ValidationMessageFor(model => model.Author)
+        </div>
+
+        <div class="editor-label">
+           价格
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            出版社
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.Publish)
+            @Html.ValidationMessageFor(model => model.Publish)
+        </div>
+
+        <div class="editor-label">
+            数量
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.TotalNum)
+            @Html.ValidationMessageFor(model => model.TotalNum)
+        </div>
+        <div class="editor-label">
+            学院
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.Category,new SelectList(new string[] { "工商管理学院", "旅游与城市管理学院", "财务与会计学院"
+,"统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院"}),Model.Category)
+           
+        </div>
+        <div class="editor-label">
+            类型
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.Categories,new SelectList(new string[] { "军事类","计算机","文史类"}),Model.Categories)
+           
+        </div>
+         <div class="editor-label">
+               新旧程度
+            </div>
+            <div class="editor-label">
+               @Html.DropDownListFor(model=>model.OldLevel,new SelectList(new string[]{"10成","9成","8成","7成","6成","5成","4成","3成"}),Model.OldLevel) 
+            </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

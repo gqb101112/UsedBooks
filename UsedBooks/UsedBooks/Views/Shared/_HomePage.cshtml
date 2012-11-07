@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="description" content="本站专门为大学生提供求购与发布二手书籍信息的平台注册后均可以在本站开店卖书，同时提供各种搜索方式为用户找到需要的二手书籍信息" />
+		<meta name="keywords" content="" />	
+	
+	<title>二手书交易平台</title>
+    
+	<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-1.4.4.min.js"type="text/javascript"></script>
+
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <style> 
+body,div,ul,li{margin:0;padding:0;}
+ul{list-style-type:none;}
+
+#box{position:relative;width:492px;height:172px;background:#fff;border-radius:5px;border:8px solid #fff;margin:10px auto;}
+#box .list{position:relative;width:490px;height:170px;overflow:hidden;border:1px solid #ccc;}
+#box .list li{position:absolute;top:0;left:0;width:490px;height:170px;opacity:0;filter:alpha(opacity=0);}
+#box .list li.current{opacity:1;filter:alpha(opacity=100);}
+#box .count{position:absolute;right:0;bottom:5px;}
+#box .count li{color:#fff;float:left;width:20px;height:20px;cursor:pointer;margin-right:5px;overflow:hidden;background:#F90;opacity:0.7;filter:alpha(opacity=70);border-radius:20px;}
+#box .count li.current{color:#fff;opacity:1;filter:alpha(opacity=100);font-weight:700;background:#f60;}
+#tmp{width:100px;height:100px;background:red;position:absolute;}
+</style>
+</head>
+<body>
+
+<div id="content">
+
+    <div id="top_info">
+	<p>
+                            <a href="../Admin/Login">登录</a> |
+                            <a href="../Admin/Register" target="_blank">开书店</a> | 
+				<a href="#" title="eke浙大校内二手书交易网站" style="CURSOR: hand" onclick="window.external.addFavorite('http://www.zjueke.com/','eke浙大校内二手书交易网站')"> 加入收藏</a> | 
+				<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://10.71.160.201/eke/');">设为首页</a> | 
+				<a href="">联系我们</a>
+
+<br />
+      <span id="loginbutton"><a href="../Admin/Register"  title="点击一键开店" class="highlight">快速注册</a></span>
+	  <form id="form1" name="form1" method="post" action="../bbs/logging.php?action=login&amp;loginsubmit=true">
+	   <input type="hidden" name="formhash" value="37b2d66a" />
+		<input type="hidden" name="cookietime" value="2592000" />
+		<input type="hidden" name="loginfield" value="username" />
+		<label>用户名
+	    <input style="width:80px; height:16px;" name="username" type="text" id="username" size="10" onblur="if(this.value==''){this.value='请输入用户名';}" 
+onfocus="if(this.value==''||this.value=='请输入用户名'){this.value='';}" 
+value=请输入用户名 style="color:#999999" />
+	    </label>
+
+	    <label>
+	    密码
+	    <input style="width:60px; height:18px;" name="password" type="password" id="password" size="10" />
+	  </label>
+	    <label>
+	    <input type="submit" name="Submit" class="button" value="登录" />
+	    </label>
+  </form>
+
+  <p>
+
+  </div>
+		
+    <div id="logo">
+	     <img src="../../Content/images/ico1.png" border="0"  class="image"/>
+	 <h1><a href="index.php" style="color:#39F; text-decoration:none;">浙江工商大学淘书网</a></h1>
+	 <p id="slogan">循环、流传，献给浙工商的学弟学妹</p>
+</div>
+    <ul id="tablist">
+<li><a class="current" href="#"><span class="current">首页</span></a></</li>
+<li><a href=" #"><span class="current">我的书店</span></a></li>
+<li><a  href="#"><span class="current">图书馆</span></a></li>
+
+<li><a href="#"><span class="current">学院模式</span></a></li>
+<li><a  href="##"><span class="current">书店模式</span></a></li>
+<li><a  href="#"><span class="current">论坛</span></a></li>
+<li><a  href="#"><span class="current">留言板</span></a></li>
+</ul>
+		
+	<div id="topics">
+						<div class="top-thirds">
+			<ul>
+				
+                <li style="color:#FF3300">@Html.ActionLink("☆我要求书☆","BookPublic","Home")</li>
+                <li style="color:#FF3300">@Html.ActionLink("☆我也开店☆","Register","Admin")</li>
+				<!--<span style="color:#FFFFFF;font-weight:bold;">最新书店=></span>-->
+				<li style="color:#FF3300">@Html.ActionLink("☆我要卖书☆","BookUpload","Admin")</li>
+			</ul>
+			</div>
+			
+		</div>
+	<div id="search">
+			<form method="post" action="search.php?tag=0">
+			  <p>
+				 <input class="search" name="key" style="color:#999999" value="请输入书名关键字" onfocus="if(this.value==''||this.value=='请输入书名关键字'){this.value='';this.className='search'}" onblur="if(this.value==''){this.value='请输入书名关键字';this.className='search'}">
+<input class="button" type="submit" value="给我搜">
+			      
+			     |<a href="search.php" class="highlight">高级搜索</a></p>
+
+			</form>
+		</div>
+    <div class="clear"></div>
+    <div id="left">
+        <div class="left_articles">
+<p>
+<img src="../../Content/images/notice.gif" alt="" />公告：<MARQUEE id=cl onmouseover=cl.stop() onmouseout=cl.start() 
+            scrollAmount=2 scrollDelay=100 direction=left width=550 style=" margin-left:10px; color:#F63;">
+						<a style="color:#F63;" href="forum.php?url=announcement.php?id=8">本站新建</a><br />
+			  
+</MARQUEE>
+	  </p>
+
+</div>			
+        <table width="80%" border="0" align="center">
+  <tr>
+	<td>
+	<script src="@Url.Content("~/Scripts/slidePlayer.js")" type=text/javascript></script>
+            <div class=SlideContainer  id=Slide>
+              <div id=SlidePlayer1>
+                <div class=SlideImages>
+                  <div class=SlideImages>
+
+                  				  
+								  <a href="" target=_blank>
+				  <img src="../../Content/images/101104102747.jpg"width="580" height="130" /></a>
+								  <a href="" target=_blank>
+				  <img src="../../Content/images/101104105149.jpg" width="580" height="130" /></a>
+								 
+								  </div>
+
+                  <div class=SlideNumContainer>
+            		<div id=SlideNum1></div>
+				  </div>
+				</div>
+			  </div>
+		    </div>
+	<script type=text/javascript>initSlidePlayer(1);</script><br />
+				
+			
+		    
+	
+	</td>
+
+  </tr>
+</table>	    
+        <div class="left_articles">
+			
+            <!--@Html.Partial("_AllBookPage")-->
+            @RenderBody()
+	</div>
+        
+        <div class="left_articles">
+  <h3>高级搜索</h3>
+  <div class="notes">说明：左边搜索书籍，右边搜索书店</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="98%" style="border:#FFCC66 dotted 1px; border-top:none; border-left:none;">
+      <form action="search.php?tag=0" method="post">
+        <tr>
+
+          <td width="30%"><div align="left">书名关键字：</div></td>
+          <td width="70%"><label>
+            <input name="title" type="text" id="title" value=""/>
+          </label></td>
+        </tr>
+        <tr>
+          <td><div align="left">作者关键字：</div></td>
+          <td><input name="author" type="text" id="author" value=""/></td>
+
+        </tr>
+        <tr>
+          <td><div align="left">出版社关键字：</div></td>
+          <td><input name="public" type="text" id="public" value=""/></td>
+        </tr>
+        <!--<tr>
+    <td><div align="left">价格区间：</div></td>
+    <td><input name="price0" type="text" id="price0" value="0" size="5" />
+      ~
+      <input name="price1" type="text" id="price1" value="1000" size="5" />
+      元</td>
+  </tr>
+  -->
+        <tr>
+          <td>新旧程度：</td>
+
+          <td><label>
+            <select name="old_degree0" id="old_degree0">
+              <option value="10">全新</option>
+              <option value="9">九成新</option>
+              <option value="8">八成新</option>
+              <option value="7">七成新</option>
+              <option value="6">六成新</option>
+
+              <option value="5">五成新</option>
+              <option value="4">四成新</option>
+              <option value="3">三成新</option>
+              <option value="2">两成新</option>
+              <option value="1" selected="selected">一成新</option>
+              <option value="0">请选择</option>
+
+            </select>
+            ~
+            <select name="old_degree1" id="old_degree1">
+              <option value="10" selected="selected">全新</option>
+              <option value="9">九成新</option>
+              <option value="8">八成新</option>
+              <option value="7">七成新</option>
+
+              <option value="6">六成新</option>
+              <option value="5">五成新</option>
+              <option value="4">四成新</option>
+              <option value="3">三成新</option>
+              <option value="2">两成新</option>
+              <option value="1">一成新</option>
+
+              <option value="0">请选择</option>
+            </select>
+          </label></td>
+        </tr>
+        <tr>
+          <td>控制条件：</td>
+          <td><label>
+            <select name="mark" id="mark">
+
+              <option value="0" selected="selected">搜索全部书籍</option>
+              <option value="2">滤除已被预定的</option>
+            </select>
+          </label></td>
+        </tr>
+        <tr>
+          <td><input name="key" type="hidden" value="high" /></td>
+          <td><label>
+
+            <input type="submit" name="Submit2" value="给我搜" class="button"/>
+          </label></td>
+        </tr>
+      </form>
+    </table>
+      </td>
+    <td>
+	<table width="100%" style="border:#FFCC66 dotted 1px; border-top:none;  border-left:none; border-right:none;">
+      <form action="src_shop.php" method="post">
+
+        <tr>
+          <td colspan="2"><label></label>
+            <div align="center" class="highlight">*搜索书店在这里*</div></td>
+          </tr>
+        <tr>
+          <td width="30%"><div align="left">店名关键字：</div></td>
+          <td width="70%"><input name="shopname" type="text" id="shopname" value=""/></td>
+        </tr>
+
+        <tr>
+          <td><div align="left">店主关键字：</div></td>
+          <td><input name="owner" type="text" id="owner" value=""/></td>
+        </tr>
+        <!--<tr>
+    <td><div align="left">价格区间：</div></td>
+    <td><input name="price0" type="text" id="price0" value="0" size="5" />
+      ~
+      <input name="price1" type="text" id="price1" value="1000" size="5" />
+      元</td>
+  </tr>
+  -->
+        <tr>
+          <td>店面说明文字：</td>
+          <td><label>
+
+            <input name="info" type="text" id="info" value=""/>
+          </label></td>
+        </tr>
+        <tr>
+          <td>学院关键字：</td>
+          <td><label>
+          <select name="college" id="college1">
+            <option value=""  selected="selected">-全部学院-</option>
+
+            <option value="竺可桢学院">竺可桢学院</option>
+            <option value="人文学院">人文学院</option>
+            <option value="法学院 ">法学院 </option>
+            <option value="理学院 ">理学院 </option>
+            <option value="医学院 ">医学院 </option>
+            <option value="教育学院 ">教育学院 </option>
+
+            <option value="管理学院 ">管理学院 </option>
+            <option value="公共管理学院 ">公管学院 </option>
+            <option value="药学院">药学院</option>
+            <option value="经济学院">经济学院</option>
+            <option value="外国语学院">外国语学院</option>
+            <option value="动物科学学院">动科学院</option>
+
+            <option value="电气工程学院">电气学院</option>
+            <option value="生命科学学院 ">生科学院 </option>
+            <option value="建筑工程学院 ">建工学院 </option>
+            <option value="环境与资源学院 ">环资学院 </option>
+            <option value="材料与化工学院 ">材化学院 </option>
+            <option value="机械与能源工程学">机能学院</option>
+
+            <option value="信息工程与科学学院">信息学院</option>
+            <option value="生物系统工程与食品科学学院 ">生工食品学院 </option>
+            <option value="计算机科学与技术学院(软件学院)">计算机、软件学院</option>
+            <option value="生物医学工程与仪器科学学院 ">生仪学院 </option>
+            <option value="农业与生物技术学院">农生学院</option>
+          </select>
+
+          </label></td>
+        </tr>
+        <tr>
+          <td><input name="key" type="hidden" value="high" /></td>
+          <td><label>
+            <input type="submit" name="Submit22" value="给我搜" class="button"/>
+          </label></td>
+        </tr>
+      </form>
+
+    </table></td>
+  </tr>
+</table>
+</div>
+	
+        
+    
+    
+	    <div class="left_articles">
+			<h3><a name="hotbook" id="hotbook"></a>最新的求书！！</h3>
+				@Html.Action("BookNeedShow","Home")
+	</div>
+        <div class="left_articles">
+  <h3>最新鲜的书店</h3>
+<span class="float_right"><a href="bookshop.php?level=1">更多more>></a></span>
+<div class="notes">刚刚注册哦，也许就有你想要的书~</div></div>
+        @Html.Action("BookShop","Home")
+        <p>&nbsp;</p>
+
+        <div class="left_articles">
+
+  <h3>明星书店</h3>
+<span class="float_right"><a href="bookshop.php?level=1">更多more>></a></span>
+<div class="notes">藏书量大于30本</div></div>
+
+        <p>&nbsp;</p>
+        <div class="clear_height" >
+
+</div>
+
+        </div>
+
+
+    <div id="right">
+				<div class="right_articles">
+				<table width="100%" border="0">
+
+                  <tr>
+                    <td width="12%"><img src="../../Content/images/ico2.png" width="79" height="50" /></td>
+                    <td width="88%"><b><img src= alt="" width="12" height="13" />					关于本站</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">                    	本站专门为工商大学学生提供求购与发布二手书籍信息的平台注册后均可以在本站开店卖书，同时提供各种搜索方式为用户找到需要的二手书籍信息<br />
+
+让我们一起分享手中的二手书吧~</td>
+                  </tr>
+                </table>
+				<p>
+  </div>
+        			<div class="right_articles">
+			  <table width="100%" border="0">
+                <tr>
+                  <td width="12%"><img src="../../Content/images/ico3.png" width="79" height="57" /></td>
+
+                  <td width="88%"><b><img src="../../Content/images/ico-email.png" alt="" width="12" height="13" /> 分类检索 </b></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><ul>
+                      <li>图书馆模式检索：<br />
+                           A毛邓  | B哲学 |  C社科  |  D法律 |   E军事  |  F经管 |   G文体 | H语言 |  I文学  |   J艺术  |   K历史  | O数理化 P天文地理 | Q生物  |R医药 |  S农业| T计算机  |  U交通运输   X环境  |Z综合</li>
+
+                    <li>学院专业模式检索：<br />
+                         机能 |环资 |计算机软件 | 竺院 |人文 |理学院信息| 动科生仪  | 法学教育| 材化 |医学院 | 药学院 | 电气 | 公农生管理| 外国语经院 | 生工食品 | 建工</li>
+
+                  </ul></td>
+                </tr>
+              </table>
+			  <p>
+  </div>
+
+<!--<div class="right_articles" style="padding:0px;">
+<script type="text/javascript">
+google_ad_client = "pub-7574178975245170";
+/* 300x250, 创建于 10-9-30 */
+google_ad_slot = "8195129347";
+google_ad_width = 300;
+google_ad_height = 250;
+//
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>-->
+			<div class="right_articles">
+				<table width="100%" border="0">
+                  <tr>
+
+                    <td width="12%"><img src="../../Content/images/ico4.png" width="79" height="57" /></td>
+                    <td width="88%"><b><img src="../../Content/images/ico-fax.png" alt="" width="12" height="13" />听听书友怎么说</b><br />
+                      身边的同学都在用~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.php">我也来说说~</a></td>
+                  </tr>
+                </table>
+<table width="100%" align="center">
+	<tr>
+		<td>
+
+			        	
+		<div class="mgt10">
+          	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:0px 20px; border:none;">
+				
+			</table>
+------------------------------      	  </div>
+		        	
+		<div class="mgt10">
+          	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:0px 20px; border:none;">
+			
+			</table>
+------------------------------      	  </div>
+		        	
+		<div class="mgt10">
+          	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:0px 20px; border:none;">
+				
+			</table>
+------------------------------      	  </div>
+		        	
+		<div class="mgt10">
+
+          	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:0px 20px; border:none;">
+				
+    		
+			</table>
+------------------------------      	  </div>
+		  </td>
+	</tr>
+</table>				<p>&nbsp;</p>
+  </div>
+
+  
+			<div class="right_articles">
+				<table width="100%" border="0">
+                  <tr>
+                    <td width="12%"><img src="../../Content/images/ico6.png" width="79" height="57" /></td>
+                    <td width="88%"><b><img src="../../Content/images/ico-twitter.png" alt="" width="12" height="13" />友情链接</b><br />
+                      需要与本站合作链接，点击<a href="link_apply.php" onclick="{popup=window.open('','popupnav','width=500',height=200,resizable=1,scrollbars=0');
+	popup.location.href='link_apply.php';}">申请</a> </td>
+                  </tr>
+
+                </table>
+				<table width="100%" border="0">
+                                    <tr>
+                    <td width="7%"><div align="center"><img src="../../Content/images/news.gif" width="7" height="7" /></div></td>
+                    <td width="93%"><a href=# target="_blank">
+                      百度                    </a></td>
+                  </tr>
+                                    <tr>
+
+                    <td width="7%"><div align="center"><img src="../../Content/images/news.gif" width="7" height="7" /></div></td>
+                    <td width="93%"><a href="http://www.google.cn/" target="_blank">
+                      Google                    </a></td>
+                  </tr>
+                                    <tr>
+                    <td width="7%"><div align="center"><img src="../../Content/images/news.gif" width="7" height="7" /></div></td>
+                    <td width="93%">&nbsp;</td>
+
+                  </tr>
+                                    <tr>
+                    <td width="7%"><div align="center"><img src="../../Content/images/news.gif" width="7" height="7" /></div></td>
+                    <td width="93%">&nbsp;</td>
+                  </tr>
+                                    <tr>
+                    <td width="7%"><div align="center"><img src="../../Content/images/news.gif" width="7" height="7" /></div></td>
+
+                    <td width="93%">&nbsp;</td>
+                  </tr>
+              </table>
+				<p>&nbsp;</p>
+  </div>
+			<div class="right_articles">
+			  <table width="100%" border="0">
+
+                <tr>
+                  <td width="12%"><img src="../../Content/images/ico-med-4.png" width="79" height="57" /></td>
+                  <td width="88%"><b><img src="../../Content/images/ico-phone.png" alt="" width="15" height="16" />数据统计</b><br /></td>
+                </tr>
+              </table>
+			  <table width="100%" border="0">
+                             
+                
+                
+              </table>
+  </div>
+</div>
+	
+	<div id="footer">
+
+			<p align="center">| <a href="" target="_blank">Contact Us</a> | <a href="" target="_blank">About Us</a> | <a href="mailto:pioneerwxf@gmail.com" target="_blank">Join US</a> | 技术支持:<a href="" target="_blank">WebCool-Studio</a> | </p>
+			<p align="center">&copy; Copyright 20012-2012 ZJU-eKe, Designed By: <a href="" target="_blank">Wang xianfeng</a> - <a href="">ZJU.CKC</a><br />
+
+			</p>
+			<script src="http://s22.cnzz.com/stat.php?id=4542328&web_id=4542328&show=pic" language="JavaScript"></script>
+					
+		</div>
+</div>
+</body>
+</html>		

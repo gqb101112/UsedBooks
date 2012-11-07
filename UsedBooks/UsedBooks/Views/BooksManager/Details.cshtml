@@ -1,0 +1,57 @@
+﻿@model UsedBooks.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<fieldset>
+    <legend>Album</legend>
+
+    <div class="display-label">书名</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">价格</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">出版社</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Publish)
+    </div>
+
+    <div class="display-label">作者</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">学院</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category)
+    </div>
+    <div class="display-label">类型</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Categories)
+    </div>
+    <div class="display-label">学院</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OldLevel)
+    </div>
+    <div class="display-label">数量</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalNum)
+    </div>
+    <div class="display-label">新旧程度</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OldLevel)
+        
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BookID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
