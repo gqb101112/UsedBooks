@@ -1,0 +1,91 @@
+﻿@model IEnumerable<UsedBooks.Models.ShopDetaill>
+
+@{
+    
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
+}
+
+
+<div align="center">
+<img width="635" height="120" align="middle" alt="" src="../Content/images/banner.jpg">
+</div>
+<div class="left_box">
+<h3>
+<a id="basic" name="basic"></a>
+    【书店】的基本信息
+</h3>
+    您只要
+<strong class="highlight">点击预定</strong>
+后就可以看到
+<strong class="highlight">书主的联系方式</strong>
+</div>
+@for (int i = 0; i < 1; i++)
+{
+    var s = Model.First();
+    <table width="100%" border="0">
+        <tbody>
+            
+            <tr>
+                <td width="9%">店名：</td>
+                <td width="36%">
+                    @s.ShopName 的书店
+                </td>
+                <td width="10%">店长：</td>
+                <td width="45%">@s.UserName</td>
+            </tr>
+            <tr>
+                <td>藏书：</td>
+                <td>@s.BookNum 本
+                </td>
+                <td>成交：</td>
+                <td>0本</td>
+            </tr>
+            <tr>
+                <td>口号：</td>
+                <td></td>
+                <td>学院：</td>
+                <td>管理学院 </td>
+            </tr>
+            <tr>
+                <td>创建人：</td>
+                <td>@s.UserName</td>
+                <td>创建日期：</td>
+                <td>@s.OpenDate</td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+    <div class="clear_height"></div>
+    <div class="left_box">
+        <h3>
+            <a id="mybooks" name="allbooks"></a>
+            【@s.ShopName】店的所有藏书
+        </h3>
+        
+         <div class="clear_height"></div>
+        </div>
+   
+    
+}
+<table width="100%" border="0">
+<tbody>
+    <tr>
+        @foreach (var s in Model)
+        {
+             <div class="book_frame">
+                            <div class="book_author">@s.Autnor 著</div>
+                            <div class="book_text"><img width="16" height="11" src="../../Content/images/head_06.gif" style="float:right; margin-bottom:20px;"/></div>
+                            <div class="book_title">
+                              @Html.ActionLink(s.BookName, "Order", new { id=s.BookID})   </div>
+                             <div class="book_title">
+                               @s.Publish  出版社</div>
+                            <div class="book_price">
+                                <div class="now">@s.Price 元</div>
+                            </div>
+                        </div>
+        }
+    </tr>
+    </tbody>
+</table>

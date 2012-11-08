@@ -1,0 +1,13 @@
+﻿
+@helper BookUploadJump()
+{
+    if(Session["User"]!=null||Session["LoginUser"]!=null)
+    {
+        <a href="../Views/Admin/BookUpload">书本上传</a>
+        
+    }
+    else
+    {
+        <a href="../Views/Admin/Login">登入</a>
+    }
+}
