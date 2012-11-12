@@ -1,0 +1,20 @@
+﻿@model UsedBooks.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除 确认</h2>
+
+<p>Are you sure you want to delete the album titled 
+   <strong>@Model.Name</strong>?
+</p>
+
+@using (Html.BeginForm("Delete","BooksManager",FormMethod.Post)) {
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
