@@ -19,8 +19,5 @@ namespace UsedBooks.Models
         public string BName { get; set; }
         public string Phone { get; set; }
         public System.DateTime DataTime { get; set; }
-        public int UserID { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

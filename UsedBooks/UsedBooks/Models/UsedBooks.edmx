@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UsedBookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UsedBookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="UsedBookModelStoreContainer">
           <EntitySet Name="Book" EntityType="UsedBookModel.Store.Book" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BookNeed" EntityType="UsedBookModel.Store.BookNeed" store:Type="Tables" Schema="dbo" />
@@ -115,6 +115,7 @@
           <Property Name="StudentID" Type="int" Nullable="false" />
           <Property Name="StoreName" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="DataTime" Type="datetime" Nullable="false" />
+          <Property Name="BookNum" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Book_User">
           <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />
@@ -207,12 +208,14 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
+          <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
           <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
           <EntitySet Name="Order" EntityType="UsedBookModel.Order" />
           <EntitySet Name="Pictrue" EntityType="UsedBookModel.Pictrue" />
@@ -268,7 +271,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
         </EntityContainer>
         <EntityType Name="Book">
           <Key>
@@ -287,6 +289,16 @@
           <Property Name="BookState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="UsedBookModel.FK_Book_User" FromRole="Book" ToRole="User" />
           <NavigationProperty Name="Pictrue" Relationship="UsedBookModel.FK_Pictrue_Book" FromRole="Book" ToRole="Pictrue" />
+        </EntityType>
+        <EntityType Name="BookNeed">
+          <Key>
+            <PropertyRef Name="BookNID" />
+          </Key>
+          <Property Name="BookNID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -346,6 +358,7 @@
           <Property Name="StudentID" Type="Int32" Nullable="false" />
           <Property Name="StoreName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BookNum" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Book" Relationship="UsedBookModel.FK_Book_User" FromRole="User" ToRole="Book" />
           <NavigationProperty Name="Comment" Relationship="UsedBookModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Order" Relationship="UsedBookModel.FK_Order_User" FromRole="User" ToRole="Order" />
@@ -423,16 +436,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="BookNeed">
-          <Key>
-            <PropertyRef Name="BookNID" />
-          </Key>
-          <Property Type="Int32" Name="BookNID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="price" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="BName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Phone" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DataTime" Nullable="false" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -453,6 +456,17 @@
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Categories" ColumnName="Categories" />
                 <ScalarProperty Name="BookState" ColumnName="BookState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookNeed">
+            <EntityTypeMapping TypeName="UsedBookModel.BookNeed">
+              <MappingFragment StoreEntitySet="BookNeed">
+                <ScalarProperty Name="BookNID" ColumnName="BookNID" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="BName" ColumnName="BName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DataTime" ColumnName="DataTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -514,6 +528,7 @@
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="StoreName" ColumnName="StoreName" />
                 <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+                <ScalarProperty Name="BookNum" ColumnName="BookNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -541,17 +556,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="UsedBookModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="UsedBookModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="BookNeed">
-            <EntityTypeMapping TypeName="UsedBookModel.BookNeed">
-              <MappingFragment StoreEntitySet="BookNeed">
-                <ScalarProperty Name="DataTime" ColumnName="DataTime" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="BName" ColumnName="BName" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="BookNID" ColumnName="BookNID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

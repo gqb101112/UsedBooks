@@ -2,6 +2,7 @@
 <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
     <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
+    <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
     <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
     <EntitySet Name="Order" EntityType="UsedBookModel.Order" />
     <EntitySet Name="Pictrue" EntityType="UsedBookModel.Pictrue" />
@@ -57,7 +58,6 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
   </EntityContainer>
   <EntityType Name="Book">
     <Key>
@@ -76,6 +76,16 @@
     <Property Name="BookState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="User" Relationship="UsedBookModel.FK_Book_User" FromRole="Book" ToRole="User" />
     <NavigationProperty Name="Pictrue" Relationship="UsedBookModel.FK_Pictrue_Book" FromRole="Book" ToRole="Pictrue" />
+  </EntityType>
+  <EntityType Name="BookNeed">
+    <Key>
+      <PropertyRef Name="BookNID" />
+    </Key>
+    <Property Name="BookNID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="price" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -135,6 +145,7 @@
     <Property Name="StudentID" Type="Int32" Nullable="false" />
     <Property Name="StoreName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
     <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BookNum" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Book" Relationship="UsedBookModel.FK_Book_User" FromRole="User" ToRole="Book" />
     <NavigationProperty Name="Comment" Relationship="UsedBookModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
     <NavigationProperty Name="Order" Relationship="UsedBookModel.FK_Order_User" FromRole="User" ToRole="Order" />
@@ -212,14 +223,4 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="BookNeed">
-    <Key>
-      <PropertyRef Name="BookNID" />
-    </Key>
-    <Property Type="Int32" Name="BookNID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="price" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="BName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Phone" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="DataTime" Nullable="false" Precision="3" />
-  </EntityType>
 </Schema>

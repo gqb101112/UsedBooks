@@ -124,7 +124,7 @@ namespace UsedBooks.Controllers
                          orderby book.BookNID ascending
                          select book;
             var currentPage = page <= 0 ? 1 : page;
-            return View(booksN.ToPagedList(currentPage, maxRecords));
+            return PartialView (booksN.ToPagedList(currentPage, maxRecords));
             
         }
 

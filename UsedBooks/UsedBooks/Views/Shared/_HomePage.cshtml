@@ -71,7 +71,7 @@ value=请输入用户名 style="color:#999999" />
 </div>
     <ul id="tablist">
 <li><a class="current" href="#"><span class="current">首页</span></a></</li>
-<li><a href=" #"><span class="current">我的书店</span></a></li>
+<li><span class="current">@Html.ActionLink("我的书店","PersonalShop","BooksManager")</span></li>
 <li><a  href="#"><span class="current">图书馆</span></a></li>
 
 <li><a href="#"><span class="current">学院模式</span></a></li>
@@ -148,7 +148,7 @@ value=请输入用户名 style="color:#999999" />
 </table>	    
         <div class="left_articles">
 			
-            <!--@Html.Partial("_AllBookPage")-->
+           
             @RenderBody()
 	</div>
         

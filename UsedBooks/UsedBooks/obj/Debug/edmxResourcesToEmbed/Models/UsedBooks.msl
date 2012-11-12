@@ -18,6 +18,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BookNeed">
+      <EntityTypeMapping TypeName="UsedBookModel.BookNeed">
+        <MappingFragment StoreEntitySet="BookNeed">
+          <ScalarProperty Name="BookNID" ColumnName="BookNID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Comment">
       <EntityTypeMapping TypeName="UsedBookModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
@@ -76,6 +87,7 @@
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="StoreName" ColumnName="StoreName" />
           <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+          <ScalarProperty Name="BookNum" ColumnName="BookNum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -103,16 +115,5 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="UsedBookModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="UsedBookModel.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="BookNeed">
-      <EntityTypeMapping TypeName="UsedBookModel.BookNeed">
-        <MappingFragment StoreEntitySet="BookNeed">
-          <ScalarProperty Name="DataTime" ColumnName="DataTime" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="BName" ColumnName="BName" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="BookNID" ColumnName="BookNID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

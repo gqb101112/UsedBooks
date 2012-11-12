@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "";
 }
 
-<h2>Index</h2>
+<!--<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -75,3 +76,70 @@
 }
 
 </table>
+    -->
+
+
+<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+     <h3>
+      <a id="allbooks" name="allbooks"></a>
+      我的最新藏书
+      </h3>
+      
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+     	<tbody>
+             <tr>
+                 <td bgcolor="#FFFF66">
+                     <div class="notes">郑重说明：为了不产生误导信息，请及时将已经成交的被预定书籍状态修改为“已售”，否则系统会在书籍被预定后一段时间内自动转为“已售”状态。作为店长，这是您的权利也是您的责任，谢谢您的配合。</div>
+                 </td>
+             </tr>
+             <tr>
+                <td colspan="2">
+                    @foreach (var book in Model)
+                    { 
+                        <div class="book_frame_large">
+                            <div class="book_frame">
+                                <div class="book_author">@book.Author 著</div>
+                                <div class="book_text">
+                                    <img width="16" height="11" src="../../Content/images/head_06.gif" style="float: right; margin-bottom: 20px;" /></div>
+                                <div class="book_title">
+                                    @Html.ActionLink(book.Name, "Order", new { id = book.BookID })
+                                </div>
+                                <div class="book_title">
+                                    @book.Publish  出版社
+                                </div>
+                                <div class="book_price">
+                                    <div class="now">@book.Price 元</div>
+                                </div>
+                            </div>
+                            <div class="book_note">
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <select id="tag" name="tag">
+                                                    <option selected="selected" value="1">待售</option>
+                                                    
+                                                    <option value="3">已售</option>
+                                                </select>
+                                            </td>
+                                            <td style="padding-top:5px;">
+                                                <input type="image" value="更改" name="Submit3" src="../Content/images/go.gif">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                @Html.ActionLink("编辑", "Edit", new { id=book.BookID }) |
+                                @Html.ActionLink("查看", "Details", new { id=book.BookID }) |
+                                @Html.ActionLink("删除", "Delete", new { id=book.BookID })
+                            </div>
+                        </div>
+                    }
+                    
+                    
+                </td>
+          </tr>
+          <tr>
+          </tr>
+      </tbody>
+       </table>
+        

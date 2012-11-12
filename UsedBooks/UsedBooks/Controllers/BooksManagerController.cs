@@ -39,7 +39,7 @@ namespace UsedBooks.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         } 
 
         //
@@ -143,7 +143,14 @@ namespace UsedBooks.Controllers
 
             return View();
         }
-
-      
+        [Authorize]
+        public ActionResult PersonalShop()
+        {
+            int Uid = Convert.ToInt32(Session["Uid"]);
+            var user = from u in Usedb.User
+                       where u.UserID == Uid
+                       select u;
+            return View(user);
+        }
     }
 }

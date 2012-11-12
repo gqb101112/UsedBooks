@@ -125,7 +125,8 @@ namespace UsedBook.Controllers
                     
                     {
                         Session["Uid"] = Uid;
-                        return Redirect(ReturnUrl);
+                       // return Redirect(ReturnUrl);
+                        return RedirectToAction("PersonalShop", "BooksManager");
                     }
                     else
                     {

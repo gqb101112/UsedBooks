@@ -110,6 +110,7 @@
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="StoreName" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="DataTime" Type="datetime" Nullable="false" />
+    <Property Name="BookNum" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Book_User">
     <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />

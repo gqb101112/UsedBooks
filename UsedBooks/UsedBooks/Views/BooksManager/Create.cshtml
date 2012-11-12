@@ -3,15 +3,21 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
+<div class="left_box">
+<h3>
+<a id="adb" name="adb"></a>
+添加藏书
+</h3>
+<div class="notes">快快添书吧，藏书越多，书店排位越高</div>
+    </div>
 @using (Html.BeginForm("Create","BooksManager",FormMethod.Post))
 {
     @Html.ValidationSummary(true)
-    <fieldset>
+  <!--  <fieldset>
         <legend>BookUp</legend>
 
         <div class="editor-label">
@@ -78,9 +84,81 @@
         </p>
 
         
-    </fieldset>
+    </fieldset>-->
+    <table width="100%" style="border: #FFCC66 dotted 1px; border-top: none;">
+        <tbody>
+            <tr>
+                <td class="highlight" colspan="4">**必填信息：</td>
+            </tr>
+            <tr>
+                <td width="7%">书名：</td>
+                <td width="38%">
+                @Html.TextBoxFor(m => m.Name)
+                </td>
+                <td width="10%">原价：</td>
+                <td width="45%">
+                    <input id="price0" type="text" size="5" name="price0">
+元
+                </td>
+            </tr>
+             <tr>
+                <td width="7%">作者：</td>
+                <td width="38%">
+                @Html.TextBoxFor(m => m.Author)
+                </td>
+                <td width="10%">现价：</td>
+                <td width="45%">
+                    @Html.TextBoxFor(m=>m.Price)
+                </td>
+            </tr>
+             <tr>
+                <td width="7%">出版社：</td>
+                <td width="38%">
+                @Html.TextBoxFor(m => m.Publish)
+                </td>
+                <td width="10%">新旧程度：</td>
+                <td width="45%">
+                     @Html.DropDownListFor(x => x.OldLevel, new SelectList(new string[] { "10成", "9成", "8成", "7成", "6成", "5成", "4成", "3成" }))
+                </td>
+            </tr>
+            <tr>
+                <td width="7%">数量：</td>
+                <td width="38%">
+                @Html.TextBoxFor(m => m.TotalNum)
+                </td>
+                <td width="10%">书籍类型1：</td>
+                <td width="45%">
+                    @Html.DropDownListFor(x => x.Category, new SelectList(new string[] { "工商管理学院", "旅游与城市管理学院", "财务与会计学院"
+,"统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院"}))
+                </td>
+            </tr>
+             <tr>
+                <td width="7%">书籍类型2：</td>
+                <td width="38%">
+                @Html.DropDownListFor(x => x.Categories, new SelectList(new string[] { "军事类", "计算机", "文史类" }))
+                </td>
+                <td width="10%"></td>
+                <td width="45%">
+                  
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div align="center">
+                        <input class="button" type="submit" value="添加" name="Submit22">
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <div align="center">
+                        <input class="button" type="reset" value="重置" name="Submit22">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

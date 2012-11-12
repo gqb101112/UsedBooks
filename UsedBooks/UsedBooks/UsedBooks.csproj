@@ -180,6 +180,7 @@
     <Content Include="Content\images\comment.gif" />
     <Content Include="Content\images\corner.gif" />
     <Content Include="Content\images\gg.jpg" />
+    <Content Include="Content\images\go.gif" />
     <Content Include="Content\images\head_06.gif" />
     <Content Include="Content\images\HeinH17.jpg" />
     <Content Include="Content\images\lvshe_08.gif" />
@@ -333,7 +334,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -379,6 +379,7 @@
     <Content Include="Views\Home\ShopDetail.cshtml" />
     <Content Include="Views\Home\BookNeedShow.cshtml" />
     <Content Include="Views\Shared\_PagingN.cshtml" />
+    <Content Include="Views\BooksManager\PersonalShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
