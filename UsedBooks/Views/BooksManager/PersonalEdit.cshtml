@@ -1,0 +1,115 @@
+﻿@model UsedBooks.Models.User
+
+@{
+   
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
+}
+
+<div id="left">
+    <a id="begin" name="begin"></a>
+    <div class="left_articles">
+        <h3>书店设置</h3>
+        @using (Html.BeginForm("PersonalEdit", "BooksManager", FormMethod.Post))
+        {
+            <table width="98%" border="0">
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <div align="center">亲爱的gqb，您已经拥有帐号gqb，现在您可以个性化您自己的书店了（带*为必填项）</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*书店名字</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.StoreName)
+                                您可以再修改突出您的特色
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width="21%">*书店店主</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.UserName)
+                                
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*店主手机</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.Phone)
+                                若有人预订您的书籍，我们会以短信方式通知您
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*店主Email</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.email)
+                               
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width="21%">*书店广告词</td>
+                        <td width="79" colspan="2">
+                            <label>
+                               <input id="adv" type="text" value="" name="adv">
+限制50个汉字字符
+                               
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">所属学院</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                <select id="college1" name="college">
+                                    <option selected="selected" value="">--请选择学院--</option>
+                                    
+                                    <option value="人文学院">人文学院</option>
+                                    <option value="法学院 ">法学院 </option>
+                                    <option value="理学院 ">理学院 </option>
+                                    
+                                    <option value="教育学院 ">教育学院 </option>
+                                    <option value="管理学院 ">管理学院 </option>
+                                    <option value="公共管理学院 ">公共管理学院 </option>
+                                    
+                                    <option value="经济学院">经济学院</option>
+                                    <option value="外国语学院">外国语学院</option>
+                                    
+                                    <option value="环境与资源学院 ">环境与资源学院 </option>
+                                   
+                                    
+                                    <option value="信息工程与科学学院">信息工程与科学学院</option>
+                                    
+                                    <option value="计算机科学与技术学院(软件学院)">计算机科学与技术学院(软件学院)</option>
+                                  
+                                </select>
+                                便于按学院搜索
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div align="center">
+                                <input class="button" type="submit" value="设置完成" name="Submit22">
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div align="center">
+                                <input class="button" type="reset" value="重新设置" name="Submit22">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
