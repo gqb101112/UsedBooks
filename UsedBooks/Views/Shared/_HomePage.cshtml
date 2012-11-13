@@ -32,16 +32,16 @@ ul{list-style-type:none;}
 <div id="content">
 
     <div id="top_info">
-	<p>
+<!--	<p>
                             <a href="../Admin/Login">登录</a> |
                             <a href="../Admin/Register" target="_blank">开书店</a> | 
-				<a href="#" title="eke浙大校内二手书交易网站" style="CURSOR: hand" onclick="window.external.addFavorite('http://www.zjueke.com/','eke浙大校内二手书交易网站')"> 加入收藏</a> | 
-				<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://10.71.160.201/eke/');">设为首页</a> | 
+				
 				<a href="">联系我们</a>
-
+        </p> -->
+         @Html.Partial("_LogOnPartial")
 <br />
-      <span id="loginbutton"><a href="../Admin/Register"  title="点击一键开店" class="highlight">快速注册</a></span>
-	  <form id="form1" name="form1" method="post" action="../bbs/logging.php?action=login&amp;loginsubmit=true">
+     <!-- <span id="loginbutton">@Html.ActionLink("快速注册","Register","Admin") </span><b>立即 注册，拥有e店</b>-->
+	<!--  <form id="form1" name="form1" method="post" action="../bbs/logging.php?action=login&amp;loginsubmit=true">
 	   <input type="hidden" name="formhash" value="37b2d66a" />
 		<input type="hidden" name="cookietime" value="2592000" />
 		<input type="hidden" name="loginfield" value="username" />
@@ -58,7 +58,7 @@ value=请输入用户名 style="color:#999999" />
 	    <label>
 	    <input type="submit" name="Submit" class="button" value="登录" />
 	    </label>
-  </form>
+  </form>-->
 
   <p>
 

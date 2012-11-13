@@ -183,6 +183,8 @@
     <Content Include="Content\images\go.gif" />
     <Content Include="Content\images\head_06.gif" />
     <Content Include="Content\images\HeinH17.jpg" />
+    <Content Include="Content\images\lb.gif" />
+    <Content Include="Content\images\lbhover.gif" />
     <Content Include="Content\images\lvshe_08.gif" />
     <Content Include="Content\images\searchbg.gif" />
     <Content Include="Content\images\sendmail.gif" />

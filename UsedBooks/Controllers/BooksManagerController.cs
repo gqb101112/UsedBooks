@@ -69,7 +69,7 @@ namespace UsedBooks.Controllers
                     Usedb.SaveChanges();
                     int a = 0;
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("PersonalShop");
                 }
                 else
                     return View(data);
