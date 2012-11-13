@@ -78,7 +78,11 @@
 </table>
     -->
 
-<script>
+<script type="text/javascript">
+    var SelectValue = document.getElementById("tag");
+    var change = function (Option) {
+        return Option.SelectValue();
+    }
 
 </script>
 <link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
@@ -113,7 +117,7 @@
                                     <div class="now">@book.Price 元</div>
                                 </div>
                             </div>
-   @using (Html.BeginForm("BookStateChange", "BooksManager", FormMethod.Post, new {   }))
+   @using (Html.BeginForm("BookStateChange", "BooksManager", FormMethod.Post, new { bid=book.BookID  }))
     {
                             <div class="book_note">
                                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -126,9 +130,13 @@
                                                     
                                                     <option value="1">已售</option>
                                                 </select>
+                                                
                                             </td>
                                             <td style="padding-top:5px;">
-                                                <input type="image" value="更改" name="Submit3" src="../Content/images/go.gif">
+                                                <input type="image" onclick="{
+
+    { return true; } return false;
+}" value="更改" name="Submit3" src="../Content/images/go.gif">
                                             </td>
                                         </tr>
                                    
