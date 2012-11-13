@@ -15,7 +15,8 @@
                 @user.UserName 的书店 店基本信息
         </h3>
         <span class="float_right">
-            <a href="">点此修改本店信息</a>
+            @Html.ActionLink("点此修改本店信息","PersonalEdit","BooksManager")
+            
         </span>
         <div class="notes">点击右侧修改本店信息--></div>
     </div>

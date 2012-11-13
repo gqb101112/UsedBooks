@@ -1,6 +1,17 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text>欢迎 <strong>[@Html.ActionLink(   @User.Identity.Name,"Index","BooksManager")]</strong>!
-    [ @Html.ActionLink("注销", "Logout", "Admin") ]</text>
+    
+    <text>
+        <p>
+                            
+                            @Html.ActionLink("开书店","Register","Admin") | 
+				<a href="">加入收藏</a>|
+				<a href="">联系我们</a>
+        </p>
+        <br />
+    @Html.ActionLink(   @User.Identity.Name,"PersonalShop","BooksManager")您好 
+      <span id="loginbutton">@Html.ActionLink("进入我的书店","PersonalShop","") </span>
+       </text> 
+    @:[ @Html.ActionLink("退出", "Logout", "Admin") ]
 }
 else {
     <text>

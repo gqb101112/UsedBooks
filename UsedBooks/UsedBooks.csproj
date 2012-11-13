@@ -382,6 +382,7 @@
     <Content Include="Views\Home\BookNeedShow.cshtml" />
     <Content Include="Views\Shared\_PagingN.cshtml" />
     <Content Include="Views\BooksManager\PersonalShop.cshtml" />
+    <Content Include="Views\BooksManager\PersonalEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

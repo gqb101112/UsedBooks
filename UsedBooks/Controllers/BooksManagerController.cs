@@ -66,6 +66,8 @@ namespace UsedBooks.Controllers
                     book.Categories = data.Categories;
                     book.BookState="true";
                     Usedb.Book.Add(book);
+                    User user = Usedb.User.Find(Session["Uid"]);
+                    user.BookNum = (Convert.ToInt32(user.BookNum) + 1) + "";
                     Usedb.SaveChanges();
                     int a = 0;
 
@@ -81,8 +83,7 @@ namespace UsedBooks.Controllers
             }
         }
         
-        //
-        // GET: /BooksManager/Edit/5
+        
         [Authorize]
         public ActionResult Edit(int id)
         {
@@ -90,34 +91,46 @@ namespace UsedBooks.Controllers
             return View(book);
         }
 
-        //
-        // POST: /BooksManager/Edit/5
+    
 
         [HttpPost]
         [Authorize]
-        public ActionResult Edit(Book book)
+        public ActionResult Edit(Book book,int id)
         {
-            if (ModelState.IsValid)
-            {
-                Usedb.Entry(book).State = EntityState.Modified;
-                Usedb.SaveChanges();
-                return RedirectToAction("Index");
-            }
             
-            return View(book);
+                //Usedb.Entry(book).State = EntityState.Modified;
+            Book books = Usedb.Book.Find(id);
+            books.Categories = book.Categories;
+            books.Category = book.Category;
+            books.Name = book.Name;
+            books.OldLevel = book.OldLevel;
+            books.Price = book.Price;
+            books.Publish = book.Publish;
+            books.TotalNum = book.TotalNum;
+            books.Author = book.Author;
+               
+                Usedb.SaveChanges();
+                return RedirectToAction("PersonalShop");
+           
+            
+            //return View(book);
         }
 
-        //
-        // GET: /BooksManager/Delete/5
+        
         [Authorize]
         public ActionResult Delete(int id)
         {
             Book book = Usedb.Book.Find(id);
-            return View(book);
+            Usedb.Book.Remove(book);
+            Usedb.SaveChanges();
+            User user = Usedb.User.Find(Session["Uid"]);
+            user.BookNum = (Convert.ToInt32(user.BookNum) - 1) + "";
+            TryUpdateModel(user);
+            Usedb.SaveChanges();
+            return RedirectToAction("PersonalShop");
         }
 
-        //
-        // POST: /BooksManager/Delete/5
+       
 
         [HttpPost]
         [Authorize]
@@ -128,6 +141,8 @@ namespace UsedBooks.Controllers
                 Book book = Usedb.Book.Find(id);
                 Usedb.Book.Remove(book);
                 Usedb.SaveChanges();
+                User user = Usedb.User.Find(Session["Uid"]);
+                user.BookNum = (Convert.ToInt32(user.BookNum) - 1) + "";
                 
                 return RedirectToAction("Index");
             }
@@ -152,5 +167,39 @@ namespace UsedBooks.Controllers
                        select u;
             return View(user);
         }
+        [Authorize]
+        public ActionResult PersonalEdit()
+        {
+            User user = Usedb.User.Find(Convert.ToInt32(Session["Uid"]));
+            return View(user);
+        }
+        [HttpPost]
+        [Authorize]
+        public ActionResult PersonalEdit(User user)
+        {
+            User users = Usedb.User.Find(Session["Uid"]);
+            users.StoreName = user.StoreName;
+            users.UserName = user.UserName;
+            users.Phone = user.Phone;
+            users.email = user.email;
+
+            Usedb.SaveChanges();
+            return RedirectToAction("PersonalShop");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult BookStateChange(int id,int bid)//id=0表示 待售BookState=true   id=1 表示 已售
+        {
+            Book book = Usedb.Book.Find(bid);
+            if (id == 0)
+                book.BookState = "true";
+            else
+                book.BookState = "false";
+            Usedb.SaveChanges();
+
+            return RedirectToAction("PersonalShop");
+        }
+       
     }
 }

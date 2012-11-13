@@ -33,32 +33,7 @@ ul{list-style-type:none;}
 
     <div id="top_info">
 	<p>
-                            <a href="../Admin/Login">登录</a> |
-                            <a href="../Admin/Register" target="_blank">开书店</a> | 
-				<a href="#" title="eke浙大校内二手书交易网站" style="CURSOR: hand" onclick="window.external.addFavorite('http://www.zjueke.com/','eke浙大校内二手书交易网站')"> 加入收藏</a> | 
-				<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://10.71.160.201/eke/');">设为首页</a> | 
-				<a href="">联系我们</a>
-
-<br />
-      <span id="loginbutton"><a href="../Admin/Register"  title="点击一键开店" class="highlight">快速注册</a></span>
-	  <form id="form1" name="form1" method="post" action="../bbs/logging.php?action=login&amp;loginsubmit=true">
-	   <input type="hidden" name="formhash" value="37b2d66a" />
-		<input type="hidden" name="cookietime" value="2592000" />
-		<input type="hidden" name="loginfield" value="username" />
-		<label>用户名
-	    <input style="width:80px; height:16px;" name="username" type="text" id="username" size="10" onblur="if(this.value==''){this.value='请输入用户名';}" 
-onfocus="if(this.value==''||this.value=='请输入用户名'){this.value='';}" 
-value=请输入用户名 style="color:#999999" />
-	    </label>
-
-	    <label>
-	    密码
-	    <input style="width:60px; height:18px;" name="password" type="password" id="password" size="10" />
-	  </label>
-	    <label>
-	    <input type="submit" name="Submit" class="button" value="登录" />
-	    </label>
-  </form>
+           @Html.Partial("_LogOnPartial")
 
   <p>
 
