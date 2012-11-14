@@ -384,6 +384,8 @@
     <Content Include="Views\BooksManager\PersonalShop.cshtml" />
     <Content Include="Views\BooksManager\PersonalEdit.cshtml" />
     <Content Include="Views\BooksManager\MyBookOrder.cshtml" />
+    <Content Include="Views\BooksManager\BookStateChange.cshtml" />
+    <Content Include="Views\BooksManager\BookSold.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

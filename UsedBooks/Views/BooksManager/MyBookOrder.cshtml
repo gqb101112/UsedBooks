@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<UsedBooks.Models.Order>
-
-
+           @{
+               Layout = "";
+           }
+@using (Html.BeginForm("PersonalEdit", "BooksManager", FormMethod.Post))
+        {
 <div class="left_box">
     <h3>
 <a id="mybooks" name="soldbooks"></a>
@@ -10,9 +13,9 @@
 <table width="100%">
     <tbody>
         <tr>
-            <th>书本名</th>
-            <th>预订者号码</th>
-            <th>预订日期</th>
+            <th width="30%">书本名</th>
+            <th width="35%">预订者号码</th>
+            <th width="35%">预订日期</th>
         </tr>
         @foreach(var m in Model)
         {
@@ -25,3 +28,4 @@
         }
     </tbody>
 </table>
+}

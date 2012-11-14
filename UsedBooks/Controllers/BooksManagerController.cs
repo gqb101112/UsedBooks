@@ -25,6 +25,15 @@ namespace UsedBooks.Controllers
             return View(books.ToList());
         }
 
+        public ActionResult BookSold()
+        {
+            int Uid = Convert.ToInt32(Session["Uid"]);
+            var books = from b in Usedb.Book
+                        where b.UserID == Uid && b.BookState=="false"
+                        select b;
+            return View(books.ToList());
+        }
+
         //
         // GET: /BooksManager/Details/5
        
@@ -189,8 +198,8 @@ namespace UsedBooks.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult BookStateChange(int id,int bid)//id=0表示 待售BookState=true   id=1 表示 已售
-        {
+        public ActionResult BookStateChange(int id,int bid)//id=0表示 待售BookState=true   id=1 表示 已售  bid表示书本ID
+        { 
             Book book = Usedb.Book.Find(bid);
             if (id == 0)
                 book.BookState = "true";
@@ -204,11 +213,12 @@ namespace UsedBooks.Controllers
         [Authorize]
         public ActionResult MyBookOrder()
         {
-            var orders = from o in Usedb.Order
-                         where o.UserID == Convert.ToInt32(Session["Uid"])
-                         select o;
+            int id = Convert.ToInt32(Session["Uid"]);
+            var orders = from order in Usedb.Order
+                         where order.UserID == id
+                         select order;
 
-            return View(orders);
+            return View(orders.ToList());
         }
     }
 }
