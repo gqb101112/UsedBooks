@@ -1,5 +1,5 @@
-﻿@model UsedBooks.Models.Orders
-
+﻿@model IEnumerable<UsedBooks.Models.Orders>
+           
 @{
     ViewBag.Title = "Order";
     Layout = "~/Views/Shared/_HomePage1.cshtml";
@@ -9,95 +9,22 @@
 
 
 
-<!--<h2>Order</h2>
-@using (Html.BeginForm("Order", "Home", FormMethod.Post))
-{
-    @Html.ValidationSummary(true, "帐户创建不成功。请更正错误并重试。")
-    <div>
-        <fieldset>
-            <legend>书本信息</legend>
-
-            <div class="editor-label">
-               书名
-            </div>
-            <div class="editor-field">
-                @Html.DisplayFor(m => m.Name)
-                
-            </div>
-            
-              
-           
-
-            <div class="editor-label">
-                作者
-            </div>
-            <div class="editor-field">
-                @Html.DisplayFor(m => m.Author)
-               
-            </div>
-
-            <div class="editor-label">
-                出版社
-            </div>
-           
-            <div class="editor-field">
-                @Html.DisplayFor(m => m.Publish)
-           
-            </div>
-            <div class="editor-label">
-               新旧程度
-            </div>
-            <div class="editor-label">
-               @Html.DisplayFor(m => m.OldLevel)
-            </div>
-            <div class="editor-label">
-                售价
-            </div>
-            <div class="editor-label">
-                @Html.DisplayFor(m => m.Price)
-               
-            </div>
-            <div class="editor-label">
-                数量
-            </div>
-            <div class="editor-label">
-                @Html.DisplayFor(m => m.TotalNum)
-               
-            </div>
-
-            如果您有意要购买该书，您只要点击确认预定就可以看到书主的联系方式了
-
-           <div>
-               手机号码
-           </div>
-            <div>
-                @Html.TextBoxFor(m => m.phone)
-            </div>
-            <p>
-                <input type="submit" value="预订" />
-            </p>
-        </fieldset>
-        @if (TempData["phone"] != null)
-        {
-            <span>卖家手机号码 @TempData["phone"]</span>
-        }
-    </div>
-}
-    -->
 
 <link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
 @using (Html.BeginForm("Order", "Home", FormMethod.Post))
 {
+    foreach (var ms in Model)
+    {
     <div id="left">
         <div class="left_box">
             <h3>
                 <a id="adb" name="adb"></a>
                 详细信息
            @{     if (TempData["phone"] != null)
-                {
+                  {
                     <span style:"color:#D30A00; font-size:larger">预订成功，请尽快联系卖家。卖家手机号码 @TempData["phone"]</span>
                     @Html.ActionLink("返回", "Index", "Home");
-                    }
+                  }
             }
             </h3>
             <span class="float_right">
@@ -111,12 +38,12 @@
             <tbody>
                 <tr>
                     <td width="11%">书名：</td>
-                    <td width="43%">@Html.DisplayFor(m => m.Name)</td>
+                    <td width="43%">@ms.Name</td>
                     <td width="7%">原价：</td>
                     <td width="18%">元</td>
                     <td width="21%" rowspan="5">
                         <div class="book_frame" style="">
-                            <div class="book_author">@Html.DisplayFor(m => m.Author) 著 
+                            <div class="book_author">@ms.Author 著 
 
                             </div>
                             <div class="book_text">
@@ -124,13 +51,13 @@
                             </div>
 
                             <div class="book_title">
-                                @Html.DisplayFor(m => m.Name)
+                                @ms.Name
                             </div>
                             <div class="book_title">
-                                @Html.DisplayFor(m => m.Publish)   出版社
+                                @ms.Publish   出版社
                             </div>
                             <div class="book_price">
-                                <div class="now">@Html.DisplayFor(m => m.Price) 元</div>
+                                <div class="now">m.Price 元</div>
                             </div>
                         </div>
                     </td>
@@ -138,9 +65,9 @@
 
                 <tr>
                     <td>作者：</td>
-                    <td>@Html.DisplayFor(m => m.Author)</td>
+                    <td>@ms.Author</td>
                     <td>现价：</td>
-                    <td>@Html.DisplayFor(m => m.Price) 元</td>
+                    <td>@ms.Price 元</td>
 
 
 
@@ -148,16 +75,16 @@
                 <tr>
 
                     <td>出版社：</td>
-                    <td>@Html.DisplayFor(m => m.Publish)</td>
+                    <td>@ms.Publish</td>
                     <td>新旧：</td>
-                    <td>@Html.DisplayFor(m => m.OldLevel)</td>
+                    <td>@ms.OldLevel</td>
 
                 </tr>
                 <tr>
                     <td>该书来自：</td>
-                    <td></td>
+                    <td>@Html.ActionLink(ms.StoreName, "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })的书店</td>
                     <td>书主：</td>
-                    <td>@Html.DisplayFor(m=>m.User)</td>
+                    <td>@Html.ActionLink(ms.User, "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })</td>
                 </tr>
                 <tr>
 
@@ -185,12 +112,13 @@
             <strong class="highlight">确认预定</strong>
                 就可以看到书主
             <strong class="highlight">
-                <a title="点击看书香人心本站博客" href="">书主 </a>
+                @Html.ActionLink("书主", "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })
                 的联系方式
             </strong>
                 了
             </div>
         </div>
+
 
         <table width="100%" border="0">
             <tbody>
@@ -203,7 +131,7 @@
                     </td>
                     <td width="11%">联系方式</td>
                     <td width="46%">
-                        @Html.TextBoxFor(m => m.phone)
+                        @Html.TextBoxFor(m => ms.phone)
                         建议填写手机长号
                     </td>
                 </tr>
@@ -222,6 +150,8 @@
                 </tr>
             </tbody>
         </table>
+
         <p></p>
     </div>
-}
+    }
+    }

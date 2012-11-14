@@ -57,12 +57,14 @@ namespace UsedBooks.Controllers
                 {
                     name = u.UserName;
                     order.UserID = u.UserID.ToString();
+                    order.StoreName = u.StoreName;
+                    order.date = u.DataTime.ToString();
 
                 }
                 order.User = name;
                 order.Author=b.Author;
                 order.TotalNum=b.TotalNum.ToString();
-
+               
 
             }
             Session["order"] = order;
