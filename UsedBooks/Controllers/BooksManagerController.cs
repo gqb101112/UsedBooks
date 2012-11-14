@@ -197,7 +197,7 @@ namespace UsedBooks.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+       
         public ActionResult BookStateChange(int id,int bid)//id=0表示 待售BookState=true   id=1 表示 已售  bid表示书本ID
         { 
             Book book = Usedb.Book.Find(bid);

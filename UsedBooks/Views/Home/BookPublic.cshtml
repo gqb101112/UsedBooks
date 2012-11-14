@@ -2,12 +2,8 @@
 
 @{
     ViewBag.Title = "BookPublic";
+    Layout ="~/Views/Shared/_HomePage1.cshtml";
 }
-
-
-
-
-<h2>BookPublic</h2>
 
 
 @using (Html.BeginForm("BookPublic", "Home", FormMethod.Post))
@@ -46,7 +42,7 @@
 
             
             <p>
-                <input type="submit" value="求购"  />
+                <input class="button" type="submit" value="求购"  />
             </p>
         </fieldset>
     </div>
