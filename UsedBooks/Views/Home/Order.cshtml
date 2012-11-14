@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UsedBooks.Models.Orders>
+﻿@model UsedBooks.Models.Orders
            
 @{
     ViewBag.Title = "Order";
@@ -13,8 +13,7 @@
 <link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
 @using (Html.BeginForm("Order", "Home", FormMethod.Post))
 {
-    foreach (var ms in Model)
-    {
+    
     <div id="left">
         <div class="left_box">
             <h3>
@@ -38,12 +37,12 @@
             <tbody>
                 <tr>
                     <td width="11%">书名：</td>
-                    <td width="43%">@ms.Name</td>
+                    <td width="43%">@Html.DisplayFor(m=>m.Name)</td>
                     <td width="7%">原价：</td>
                     <td width="18%">元</td>
                     <td width="21%" rowspan="5">
                         <div class="book_frame" style="">
-                            <div class="book_author">@ms.Author 著 
+                            <div class="book_author">@Html.DisplayFor(m=>m.Author) 著 
 
                             </div>
                             <div class="book_text">
@@ -153,5 +152,5 @@
 
         <p></p>
     </div>
-    }
+    
     }
