@@ -50,13 +50,13 @@
                             </div>
 
                             <div class="book_title">
-                                @ms.Name
+                                @Html.DisplayFor(m=>m.Author)
                             </div>
                             <div class="book_title">
-                                @ms.Publish   出版社
+                                 @Html.DisplayFor(m=>m.Publish)   出版社
                             </div>
                             <div class="book_price">
-                                <div class="now">m.Price 元</div>
+                                <div class="now"> @Html.DisplayFor(m=>m.Price) 元</div>
                             </div>
                         </div>
                     </td>
@@ -64,9 +64,9 @@
 
                 <tr>
                     <td>作者：</td>
-                    <td>@ms.Author</td>
+                    <td> @Html.DisplayFor(m=>m.Author)</td>
                     <td>现价：</td>
-                    <td>@ms.Price 元</td>
+                    <td> @Html.DisplayFor(m=>m.Price)</td>
 
 
 
@@ -74,16 +74,16 @@
                 <tr>
 
                     <td>出版社：</td>
-                    <td>@ms.Publish</td>
+                    <td> @Html.DisplayFor(m=>m.Publish)</td>
                     <td>新旧：</td>
-                    <td>@ms.OldLevel</td>
+                    <td> @Html.DisplayFor(m=>m.OldLevel)</td>
 
                 </tr>
                 <tr>
                     <td>该书来自：</td>
-                    <td>@Html.ActionLink(ms.StoreName, "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })的书店</td>
+                    <td> @Html.DisplayFor(m=>m.Author) 的书店</td>
                     <td>书主：</td>
-                    <td>@Html.ActionLink(ms.User, "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })</td>
+                    <td> @Html.DisplayFor(m=>m.Author)</td>
                 </tr>
                 <tr>
 
@@ -111,7 +111,7 @@
             <strong class="highlight">确认预定</strong>
                 就可以看到书主
             <strong class="highlight">
-                @Html.ActionLink("书主", "ShopDetail", new { date = ms.date, id = Convert.ToInt32(ms.UserID), Uname = ms.User })
+                书主
                 的联系方式
             </strong>
                 了
@@ -130,7 +130,7 @@
                     </td>
                     <td width="11%">联系方式</td>
                     <td width="46%">
-                        @Html.TextBoxFor(m => ms.phone)
+                        @Html.TextBoxFor(m => m.phone)
                         建议填写手机长号
                     </td>
                 </tr>

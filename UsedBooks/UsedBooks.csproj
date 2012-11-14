@@ -383,6 +383,7 @@
     <Content Include="Views\Shared\_PagingN.cshtml" />
     <Content Include="Views\BooksManager\PersonalShop.cshtml" />
     <Content Include="Views\BooksManager\PersonalEdit.cshtml" />
+    <Content Include="Views\BooksManager\MyBookOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

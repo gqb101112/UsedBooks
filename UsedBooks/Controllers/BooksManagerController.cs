@@ -200,6 +200,15 @@ namespace UsedBooks.Controllers
 
             return RedirectToAction("PersonalShop");
         }
-       
+
+        [Authorize]
+        public ActionResult MyBookOrder()
+        {
+            var orders = from o in Usedb.Order
+                         where o.UserID == Convert.ToInt32(Session["Uid"])
+                         select o;
+
+            return View(orders);
+        }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<UsedBooks.Models.Order>
+
+
+<div class="left_box">
+    <h3>
+<a id="mybooks" name="soldbooks"></a>
+<a href="">我的最新已售</a>
+</h3>
+</div>
+<table width="100%">
+    <tbody>
+        <tr>
+            <th>书本名</th>
+            <th>预订者号码</th>
+            <th>预订日期</th>
+        </tr>
+        @foreach(var m in Model)
+        {
+               <tr>
+                <td width="30%">@m.BName</td>
+                   <td width="35%">@m.Phone</td>
+                   <td width="35%">@m.OrderDate</td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
