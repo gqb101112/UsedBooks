@@ -3,6 +3,12 @@
                Layout = "~/Views/Shared/_HomePage1.cshtml";
            }
 
+<script type="text/javascript">
+    var headTitle = document.getElementById("myshop");
+    headTitle.currentStyle = "current";
+    headTitle.className = "current";
+</script>
+
 @foreach (var user in Model)
 {          
     <div align="center">
