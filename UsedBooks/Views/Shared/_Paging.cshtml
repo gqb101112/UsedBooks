@@ -1,18 +1,18 @@
 ﻿<p>
     @if (Model.HasPreviousPage)
     {
-        @Html.ActionLink("<< 首页", "Index", new
+        @Ajax.ActionLink("<< 首页", "Index", new
    {
        page = 1,
        sortOrder = ViewBag.CurrentSortOrder
-   })
+   }, new AjaxOptions {UpdateTargetId="book_show" })
         @Html.Raw("&nbsp;");
-        @Html.ActionLink("< 上一页", "Index", new
+        @Ajax.ActionLink("< 上一页", "Index", new
    {
        page = Model.PageNumber - 1,
        sortOrder =
            ViewBag.CurrentSortOrder
-   })
+   }, new AjaxOptions { UpdateTargetId="book_show"})
     }
     else
     {
@@ -23,17 +23,17 @@
     &nbsp;&nbsp;
     @if (Model.HasNextPage)
     {
-        @Html.ActionLink("下一页 >", "Index", new
+        @Ajax.ActionLink("下一页 >", "Index", new
    {
        page = Model.PageNumber + 1,
        sortOrder = ViewBag.CurrentSortOrder
-   })
+   }, new AjaxOptions { UpdateTargetId="book_show"})
         @Html.Raw("&nbsp;");
-        @Html.ActionLink("末页 >>", "Index", new
+        @Ajax.ActionLink("末页 >>", "Index", new
    {
        page = Model.PageCount,
        sortOrder = ViewBag.CurrentSortOrder
-   })
+   }, new AjaxOptions { UpdateTargetId="book_show"})
     }
     else
     {
