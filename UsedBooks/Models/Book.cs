@@ -30,6 +30,9 @@ namespace UsedBooks.Models
         public string Category { get; set; }
         public string Categories { get; set; }
         public string BookState { get; set; }
+        public string OldPrice { get; set; }
+        public string Professional { get; set; }
+        public string Course { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<Pictrue> Pictrue { get; set; }

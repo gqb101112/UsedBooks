@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
+  <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities2">
     <EntitySetMapping Name="Book">
       <EntityTypeMapping TypeName="UsedBookModel.Book">
         <MappingFragment StoreEntitySet="Book">
@@ -15,6 +15,9 @@
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="Categories" ColumnName="Categories" />
           <ScalarProperty Name="BookState" ColumnName="BookState" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="Professional" ColumnName="Professional" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

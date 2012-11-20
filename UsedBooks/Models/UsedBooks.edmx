@@ -49,6 +49,9 @@
           <Property Name="Category" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Categories" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="BookState" Type="varchar" MaxLength="50" />
+          <Property Name="OldPrice" Type="varchar" MaxLength="50" />
+          <Property Name="Professional" Type="varchar" MaxLength="50" />
+          <Property Name="Course" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="BookNeed">
           <Key>
@@ -213,7 +216,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="UsedBookEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
           <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
           <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
@@ -287,6 +290,9 @@
           <Property Name="Category" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Categories" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="BookState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OldPrice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Professional" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Course" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="UsedBookModel.FK_Book_User" FromRole="Book" ToRole="User" />
           <NavigationProperty Name="Pictrue" Relationship="UsedBookModel.FK_Pictrue_Book" FromRole="Book" ToRole="Pictrue" />
         </EntityType>
@@ -441,7 +447,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
+        <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities2">
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="UsedBookModel.Book">
               <MappingFragment StoreEntitySet="Book">
@@ -456,6 +462,9 @@
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Categories" ColumnName="Categories" />
                 <ScalarProperty Name="BookState" ColumnName="BookState" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="Professional" ColumnName="Professional" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

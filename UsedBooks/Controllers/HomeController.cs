@@ -13,7 +13,7 @@ namespace UsedBooks.Controllers
 {
     public class HomeController : Controller
     {
-        UsedBookEntities1 Usedb = new UsedBookEntities1();
+        UsedBookEntities2 Usedb = new UsedBookEntities2();
         int bookId = 0;
         public ActionResult Index(string sortOrder,int page=1)
         {

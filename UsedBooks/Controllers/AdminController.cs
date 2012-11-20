@@ -13,7 +13,7 @@ namespace UsedBook.Controllers
 {
     public class AdminController :Controller
     {
-        UsedBookEntities1 Usedb = new UsedBookEntities1();
+        UsedBookEntities2 Usedb = new UsedBookEntities2();
         #region 注册
         /// <summary>
         /// 注册
