@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<UsedBooks.Models.BookNeed>
 
-
+@if (IsAjax)
+{
+    Layout = null;
+}
  <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
      	<tbody>
           <tr>

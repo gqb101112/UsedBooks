@@ -187,11 +187,14 @@
     <Content Include="Content\images\lbhover.gif" />
     <Content Include="Content\images\lvshe_08.gif" />
     <Content Include="Content\images\notes.gif" />
+    <Content Include="Content\images\renren.png" />
     <Content Include="Content\images\searchbg.gif" />
     <Content Include="Content\images\sendmail.gif" />
     <Content Include="Content\images\shop1.gif" />
     <Content Include="Content\images\shop2.gif" />
+    <Content Include="Content\images\sina.png" />
     <Content Include="Content\images\topicsbg.gif" />
+    <Content Include="Content\images\top_logos_sprite.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
