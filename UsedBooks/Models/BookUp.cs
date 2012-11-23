@@ -21,8 +21,8 @@ namespace UsedBook.Models
         [Required(ErrorMessage="请填写书籍数量")]
         public string TotalNum { get; set; }
         public string Categories { get; set; }
-        
 
+        public string OldPrice { get; set; }
       
 
 

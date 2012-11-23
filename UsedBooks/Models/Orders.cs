@@ -25,5 +25,6 @@ namespace UsedBooks.Models
         public string TotalNum { get; set; }
         public string BookID { get; set; }
         public string StoreName { get; set; }
+        public string OldPrice { get; set; }
     }
 }

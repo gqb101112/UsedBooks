@@ -17,74 +17,7 @@
 @using (Html.BeginForm("Create","BooksManager",FormMethod.Post))
 {
     @Html.ValidationSummary(true)
-  <!--  <fieldset>
-        <legend>BookUp</legend>
-
-        <div class="editor-label">
-            书名
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(m => m.Name)
-            @Html.ValidationMessageFor(m => m.Name)
-        </div>
-
-        <div class="editor-label">
-            作者
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(m => m.Author)
-            @Html.ValidationMessageFor(m => m.Author)
-        </div>
-
-        <div class="editor-label">
-            出版社
-        </div>
-
-        <div class="editor-field">
-            @Html.TextBoxFor(m => m.Publish)
-
-        </div>
-        <div class="editor-label">
-            新旧程度
-        </div>
-        <div class="editor-label">
-            @Html.DropDownListFor(x => x.OldLevel, new SelectList(new string[] { "10成", "9成", "8成", "7成", "6成", "5成", "4成", "3成" }))
-        </div>
-        <div class="editor-label">
-            售价
-        </div>
-        <div class="editor-label">
-            @Html.TextBoxFor(m => m.Price)
-            @Html.ValidationMessageFor(m => m.Price)
-        </div>
-        <div class="editor-label">
-            数量
-        </div>
-        <div class="editor-label">
-            @Html.TextBoxFor(m => m.TotalNum)
-            @Html.ValidationMessageFor(m => m.TotalNum)
-        </div>
-
-        <div class="editor-label">
-            书籍类型1
-        </div>
-        <div class="editor-label">
-            @Html.DropDownListFor(x => x.Category, new SelectList(new string[] { "工商管理学院", "旅游与城市管理学院", "财务与会计学院"
-,"统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院"}))
-        </div>
-        <div class="editor-label">
-            书籍类型2
-        </div>
-        <div class="editor-label">
-            @Html.DropDownListFor(x => x.Categories, new SelectList(new string[] { "军事类", "计算机", "文史类" }))
-        </div>
-
-        <p>
-            <input type="submit" value="增加" />
-        </p>
-
-        
-    </fieldset>-->
+  
     <table width="100%" style="border: #FFCC66 dotted 1px; border-top: none;">
         <tbody>
             <tr>
@@ -97,8 +30,8 @@
                 </td>
                 <td width="10%">原价：</td>
                 <td width="45%">
-                    <input id="price0" type="text" size="5" name="price0">
-元
+                    
+                   @Html.TextBoxFor(m=>m.OldPrice)元
                 </td>
             </tr>
              <tr>

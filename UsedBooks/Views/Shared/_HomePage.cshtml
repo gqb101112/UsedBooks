@@ -49,9 +49,9 @@ ul{list-style-type:none;}
 	 <p id="slogan">循环、流传，献给浙工商的学弟学妹</p>
 </div>
     <ul id="tablist">
-<li><a class="current" href="#"><span class="current">首页</span></a></</li>
-<li><span class="current">@Html.ActionLink("我的书店","PersonalShop","BooksManager")</span></li>
-<li><a  href="#"><span class="current">图书馆</span></a></li>
+<li><a id="index" class="current" href="@Url.Action("Index","Home")"><span class="current">首页</span></a></</li>
+<li><a id="myshop"  href="@Url.Action("PersonalShop","BooksManager")"><span class="current">我的书店</span></a></li>
+<li><a id="library" href="#"><span class="current">图书馆</span></a></li>
 
 <li><a href="#"><span class="current">学院模式</span></a></li>
 <li><a  href="##"><span class="current">书店模式</span></a></li>

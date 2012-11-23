@@ -46,6 +46,7 @@ namespace UsedBooks.Controllers
                 order.Name=b.Name;
                 order.BookID=id.ToString();
                 order.OldLevel=b.OldLevel;
+                order.OldPrice = b.OldPrice;
                 order.Price=b.Price;
                 order.Publish=b.Publish;
                 var user = from use in Usedb.User

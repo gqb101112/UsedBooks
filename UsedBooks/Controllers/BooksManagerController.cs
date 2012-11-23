@@ -74,6 +74,7 @@ namespace UsedBooks.Controllers
                     book.TotalNum = Convert.ToInt32(data.TotalNum);
                     book.Categories = data.Categories;
                     book.BookState="true";
+                    book.OldPrice = data.OldPrice;
                     Usedb.Book.Add(book);
                     User user = Usedb.User.Find(Session["Uid"]);
                     user.BookNum = (Convert.ToInt32(user.BookNum) + 1) + "";

@@ -8,7 +8,11 @@
 }
 
 
-
+<script type="text/javascript">
+    var headTitle = document.getElementById("myshop");
+    headTitle.currentStyle = "current";
+    headTitle.className = "current";
+</script>
 
 <link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
 @using (Html.BeginForm("Order", "Home", FormMethod.Post))
@@ -56,6 +60,7 @@
                                  @Html.DisplayFor(m=>m.Publish)   出版社
                             </div>
                             <div class="book_price">
+                                <div class="before">@Html.DisplayFor(m=>m.OldPrice)元</div>
                                 <div class="now"> @Html.DisplayFor(m=>m.Price) 元</div>
                             </div>
                         </div>
