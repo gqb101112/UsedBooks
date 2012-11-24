@@ -26,6 +26,5 @@ C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\obj\Debug\UsedBooks.pdb
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\bin\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\bin\zh-Hans\Microsoft.QualityTools.Testing.Fakes.resources.dll
-C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\obj\Debug\UsedBooks.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\bin\System.Web.Abstractions.dll
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\UsedBooks\UsedBooks\bin\System.Web.Routing.dll
