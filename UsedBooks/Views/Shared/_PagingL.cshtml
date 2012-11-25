@@ -4,14 +4,16 @@
         @Ajax.ActionLink("<< 首页", "LibrarySearch", new
    {
        page = 1,
-       sortOrder = ViewBag.CurrentSortOrder
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
    }, new AjaxOptions {UpdateTargetId="book_show" })
         @Html.Raw("&nbsp;");
         @Ajax.ActionLink("< 上一页", "LibrarySearch", new
    {
        page = Model.PageNumber - 1,
        sortOrder =
-           ViewBag.CurrentSortOrder
+           ViewBag.CurrentSortOrder,
+           searchID=ViewBag.SearchType
    }, new AjaxOptions { UpdateTargetId="book_show"})
     }
     else
@@ -26,13 +28,15 @@
         @Ajax.ActionLink("下一页 >", "LibrarySearch", new
    {
        page = Model.PageNumber + 1,
-       sortOrder = ViewBag.CurrentSortOrder
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
    }, new AjaxOptions { UpdateTargetId="book_show"})
         @Html.Raw("&nbsp;");
         @Ajax.ActionLink("末页 >>", "LibrarySearch", new
    {
        page = Model.PageCount,
-       sortOrder = ViewBag.CurrentSortOrder
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
    }, new AjaxOptions { UpdateTargetId="book_show"})
     }
     else
