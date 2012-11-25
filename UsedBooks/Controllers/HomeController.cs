@@ -184,6 +184,33 @@ namespace UsedBooks.Controllers
             return PartialView(shops);
         }
 
-        
+        public ActionResult Library()
+        {
+            
+            return View();
+
+        }
+
+        public ActionResult LibrarySearch(string sortOrder, string searchID, int page = 1)
+        {
+            ViewBag.CurrentSortOrder = sortOrder;
+            ViewBag.SearchType = searchID;
+            var books = LibrarySearchAPI(searchID);
+            const int maxRecords = 36;// 每页最大数目
+            var currentPage = page <= 0 ? 1 : page;
+            return View(books.ToPagedList(currentPage,maxRecords));
+        }
+        public IQueryable<Book> LibrarySearchAPI(string searchId)
+        {
+            var books = from book in Usedb.Book
+                        select book;
+            books = books.Where(b =>
+                b.Categories.ToUpper().Contains(searchId)).OrderByDescending(b=>b.BookID);
+
+            return books;
+
+        }
     }
+   
+
 }

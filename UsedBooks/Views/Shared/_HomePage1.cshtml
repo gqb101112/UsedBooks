@@ -48,7 +48,7 @@ ul{list-style-type:none;}
     <ul id="tablist">
 <li><a id="index"  href="@Url.Action("Index","Home")"><span class="current">首页</span></a></</li>
 <li><a  id="myshop" href="@Url.Action("PersonalShop","BooksManager")"><span class="current">我的书店</span></a></li>
-<li><a  id="library" href="#"><span class="current">图书馆</span></a></li>
+<li><a  id="library" href="@Url.Action("Library","Home")"><span class="current">图书馆</span></a></li>
 
 <li><a id="college" href="#"><span class="current">学院模式</span></a></li>
 <li><a id="bookshop" href="##"><span class="current">书店模式</span></a></li>
@@ -80,8 +80,9 @@ ul{list-style-type:none;}
 		</div>
     <div class="clear"></div>
     <div id="left">
-    
+         <div class="left_articles" id="book_show">
         @RenderBody()
+             </div>
         </div>
     <div id="right">
 				<div class="right_articles">
