@@ -41,12 +41,13 @@
                                 <div class="book_text">
                                     <img width="16" height="11" src="../../Content/images/head_06.gif" style="float: right; margin-bottom: 20px;" /></div>
                                 <div class="book_title">
-                                    @Html.ActionLink(book.Name, "Details", new { id = book.BookID })
+                                 <a href="@Url.Action("Order","Home", new { id = book.BookID })">@book.Name</a>  
                                 </div>
                                 <div class="book_title">
                                     @book.Publish  出版社
                                 </div>
                                 <div class="book_price">
+                                    <div class="before">@book.OldPrice 元</div>
                                     <div class="now">@book.Price 元</div>
                                 </div>
                             </div>

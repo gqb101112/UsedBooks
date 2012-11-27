@@ -16,6 +16,7 @@ namespace UsedBooks.Models
         public string Publish { get; set; }
         public string Price { get; set; }
         public string Autnor { get; set; }
+        public string OldPrice { get; set; }
         
     }
 }

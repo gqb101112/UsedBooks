@@ -180,6 +180,7 @@
     <Content Include="Content\images\B.gif" />
     <Content Include="Content\images\back.gif" />
     <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\bgshade.gif" />
     <Content Include="Content\images\book1.gif" />
     <Content Include="Content\images\book2.gif" />
     <Content Include="Content\images\c.gif" />
@@ -196,6 +197,7 @@
     <Content Include="Content\images\head_06.gif" />
     <Content Include="Content\images\HeinH17.jpg" />
     <Content Include="Content\images\i.gif" />
+    <Content Include="Content\images\img10_.gif" />
     <Content Include="Content\images\j.gif" />
     <Content Include="Content\images\k.gif" />
     <Content Include="Content\images\lb.gif" />
@@ -417,6 +419,8 @@
     <Content Include="Views\Home\Library.cshtml" />
     <Content Include="Views\Home\LibrarySearch.cshtml" />
     <Content Include="Views\Shared\_PagingL.cshtml" />
+    <Content Include="Views\Home\College.cshtml" />
+    <Content Include="Views\Home\CollegeBookShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

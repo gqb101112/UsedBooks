@@ -68,6 +68,12 @@
                 @Html.TextBoxFor(m=>m.StudentID)
                 @Html.ValidationMessageFor(m=>m.StudentID)
             </div>
+            <div class="editor-label">
+                学院
+            </div>
+            <div>
+                @Html.DropDownListFor(m=> m.College, new SelectList(new string[] { "--请选择学院--", "工商管理学院","旅游与城市管理学院","财务与会计学院","统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院","法学院","人文与传播学院","公共管理学院","外国语学院","日本语言文化学院","艺术设计学院","马克思主义学院","杭州商学院","章乃器学院"}))
+            </div>
             <p>
                 <input type="submit" value="注册" />
             </p>

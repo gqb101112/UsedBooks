@@ -34,5 +34,7 @@ namespace UsedBook.Models
         [RegularExpression(@"^\d{10}$",ErrorMessage="请输入10位的学号")]
         public string StudentID { get; set; }
 
+        public string College { get; set; }
+
     }
 }

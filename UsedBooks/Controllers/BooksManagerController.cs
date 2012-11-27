@@ -11,13 +11,14 @@ namespace UsedBooks.Controllers
 {   
     public class BooksManagerController : Controller
     {
-        UsedBookEntities2 Usedb = new UsedBookEntities2();
-        //
-        // GET: /BooksManager/
+        UsedBookEntities1 Usedb = new UsedBookEntities1();
+      
         
         [Authorize]
         public ActionResult Index()
         {
+            
+            
             int Uid =Convert.ToInt32( Session["Uid"]);
             var books = from b in Usedb.Book
                         where b.UserID==Uid
@@ -34,8 +35,7 @@ namespace UsedBooks.Controllers
             return View(books.ToList());
         }
 
-        //
-        // GET: /BooksManager/Details/5
+       
        
         public ActionResult Details(int id)
         {
@@ -51,8 +51,7 @@ namespace UsedBooks.Controllers
             return PartialView();
         } 
 
-        //
-        // POST: /BooksManager/Create
+       
 
         [HttpPost]
         [Authorize]
@@ -75,6 +74,8 @@ namespace UsedBooks.Controllers
                     book.Categories = data.Categories;
                     book.BookState="true";
                     book.OldPrice = data.OldPrice;
+                    book.Professional = data.Professional;
+                    book.Course = data.Course;
                     Usedb.Book.Add(book);
                     User user = Usedb.User.Find(Session["Uid"]);
                     user.BookNum = (Convert.ToInt32(user.BookNum) + 1) + "";
@@ -118,9 +119,11 @@ namespace UsedBooks.Controllers
             books.Publish = book.Publish;
             books.TotalNum = book.TotalNum;
             books.Author = book.Author;
-               
-                Usedb.SaveChanges();
-                return RedirectToAction("PersonalShop");
+            books.OldPrice = book.OldPrice;
+            
+           
+            Usedb.SaveChanges();
+            return RedirectToAction("PersonalShop");
            
             
             //return View(book);
@@ -192,7 +195,7 @@ namespace UsedBooks.Controllers
             users.UserName = user.UserName;
             users.Phone = user.Phone;
             users.email = user.email;
-
+            users.College = user.College;
             Usedb.SaveChanges();
             return RedirectToAction("PersonalShop");
         }

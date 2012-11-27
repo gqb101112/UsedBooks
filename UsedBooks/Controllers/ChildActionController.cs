@@ -12,7 +12,7 @@ namespace UsedBooks.Controllers
         //
         // GET: /ChildAction/
 
-        UsedBookEntities2 Usedb = new UsedBookEntities2();
+        UsedBookEntities1 Usedb = new UsedBookEntities1();
         [ChildActionOnly]
         public PartialViewResult AllBooksReturn()
         {

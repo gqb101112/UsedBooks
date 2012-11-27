@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities2">
+  <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
     <EntitySetMapping Name="Book">
       <EntityTypeMapping TypeName="UsedBookModel.Book">
         <MappingFragment StoreEntitySet="Book">
@@ -38,7 +38,6 @@
           <ScalarProperty Name="CommentID" ColumnName="CommentID" />
           <ScalarProperty Name="Body" ColumnName="Body" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -91,6 +90,7 @@
           <ScalarProperty Name="StoreName" ColumnName="StoreName" />
           <ScalarProperty Name="DataTime" ColumnName="DataTime" />
           <ScalarProperty Name="BookNum" ColumnName="BookNum" />
+          <ScalarProperty Name="College" ColumnName="College" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

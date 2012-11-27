@@ -13,7 +13,7 @@ namespace UsedBook.Controllers
 {
     public class AdminController :Controller
     {
-        UsedBookEntities2 Usedb = new UsedBookEntities2();
+        UsedBookEntities1 Usedb = new UsedBookEntities1();
         #region 注册
         /// <summary>
         /// 注册
@@ -65,7 +65,7 @@ namespace UsedBook.Controllers
                     user.StudentID = Convert.ToInt32(data.StudentID);
                     user.email = data.Email;
                     user.DataTime = DateTime.Now;
-                    
+                    user.College = data.College;
                     Usedb.User.Add(user);
 
                     Usedb.SaveChanges();

@@ -6,14 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UsedBooks.Models;
-using PagedList;
+
 
 
 namespace UsedBooks.Controllers
 {
     public class HomeController : Controller
     {
-        UsedBookEntities2 Usedb = new UsedBookEntities2();
+        UsedBookEntities1 Usedb = new UsedBookEntities1();
         int bookId = 0;
         public ActionResult Index(string sortOrder,int page=1)
         {
@@ -177,6 +177,7 @@ namespace UsedBooks.Controllers
                 shop.Publish = b.Publish;
                 shop.ShopName = Uname + "的书店";
                 shop.UserName = Uname;
+                shop.OldPrice = b.OldPrice;
                 shops.Add(shop);
 
             
@@ -208,6 +209,37 @@ namespace UsedBooks.Controllers
                 b.Categories.ToUpper().Contains(searchId)).OrderByDescending(b=>b.BookID);
 
             return books;
+
+        }
+        public ActionResult College()
+        {
+
+            return View();
+        }
+        public ActionResult CollegeBookShop(string sortOrder,string collegeType,int page=1)
+        {
+            ViewBag.CurrentSortOrder = sortOrder;
+            ViewBag.CollegeType = collegeType;
+            var users = from use in Usedb.User
+                        where use.College==collegeType
+                        select use;
+            List<BookShop> shops = new List<BookShop>();
+            foreach (User u in users)
+            {
+                BookShop shop = new BookShop();
+                shop.User = u.UserName;
+                shop.UserID = u.UserID.ToString();
+                shop.OpenTime = u.DataTime.ToShortDateString();
+                var books = from book in Usedb.Book
+                            where book.UserID == u.UserID
+                            select book;
+                shop.BookNum = books.Count().ToString();
+                shops.Add(shop);
+
+            }
+            const int maxRecords = 36;// 每页最大数目
+            var currentPage = page <= 0 ? 1 : page;
+            return View(shops);
 
         }
     }

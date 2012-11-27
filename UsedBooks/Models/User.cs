@@ -17,7 +17,6 @@ namespace UsedBooks.Models
         public User()
         {
             this.Book = new HashSet<Book>();
-            this.Comment = new HashSet<Comment>();
             this.Order = new HashSet<Order>();
         }
     
@@ -31,11 +30,9 @@ namespace UsedBooks.Models
         public string StoreName { get; set; }
         public System.DateTime DataTime { get; set; }
         public string BookNum { get; set; }
+        public string College { get; set; }
     
         public virtual ICollection<Book> Book { get; set; }
-        public virtual ICollection<Comment> Comment { get; set; }
         public virtual ICollection<Order> Order { get; set; }
-        public virtual User User1 { get; set; }
-        public virtual User User2 { get; set; }
     }
 }

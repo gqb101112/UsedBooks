@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="UsedBookEntities2" p1:LazyLoadingEnabled="true">
+  <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
     <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
     <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
     <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
@@ -16,17 +16,9 @@
       <End Role="Book" EntitySet="Book" />
       <End Role="Pictrue" EntitySet="Pictrue" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comment_User" Association="UsedBookModel.FK_Comment_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Comment" EntitySet="Comment" />
-    </AssociationSet>
     <AssociationSet Name="FK_Order_User" Association="UsedBookModel.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_User" Association="UsedBookModel.FK_User_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="User1" EntitySet="User" />
     </AssociationSet>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -71,7 +63,7 @@
     <Property Name="Price" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
     <Property Name="TotalNum" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="Category" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Category" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Categories" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="BookState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="OldPrice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -97,8 +89,6 @@
     <Property Name="CommentID" Type="Int32" Nullable="false" />
     <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="User" Relationship="UsedBookModel.FK_Comment_User" FromRole="Comment" ToRole="User" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -149,11 +139,9 @@
     <Property Name="StoreName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
     <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BookNum" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="College" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Book" Relationship="UsedBookModel.FK_Book_User" FromRole="User" ToRole="Book" />
-    <NavigationProperty Name="Comment" Relationship="UsedBookModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
     <NavigationProperty Name="Order" Relationship="UsedBookModel.FK_Order_User" FromRole="User" ToRole="Order" />
-    <NavigationProperty Name="User1" Relationship="UsedBookModel.FK_User_User" FromRole="User" ToRole="User1" />
-    <NavigationProperty Name="User2" Relationship="UsedBookModel.FK_User_User" FromRole="User1" ToRole="User" />
   </EntityType>
   <Association Name="FK_Book_User">
     <End Role="User" Type="UsedBookModel.User" Multiplicity="1" />
@@ -179,18 +167,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Comment_User">
-    <End Role="User" Type="UsedBookModel.User" Multiplicity="1" />
-    <End Role="Comment" Type="UsedBookModel.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Order_User">
     <End Role="User" Type="UsedBookModel.User" Multiplicity="1" />
     <End Role="Order" Type="UsedBookModel.Order" Multiplicity="*" />
@@ -199,18 +175,6 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="Order">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_User_User">
-    <End Role="User" Type="UsedBookModel.User" Multiplicity="1" />
-    <End Role="User1" Type="UsedBookModel.User" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="User1">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>

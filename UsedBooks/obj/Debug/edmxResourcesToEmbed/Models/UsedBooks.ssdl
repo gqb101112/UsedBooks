@@ -12,10 +12,6 @@
       <End Role="User" EntitySet="User" />
       <End Role="Book" EntitySet="Book" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comment_User" Association="UsedBookModel.Store.FK_Comment_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Comment" EntitySet="Comment" />
-    </AssociationSet>
     <AssociationSet Name="FK_Order_User" Association="UsedBookModel.Store.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />
@@ -23,10 +19,6 @@
     <AssociationSet Name="FK_Pictrue_Book" Association="UsedBookModel.Store.FK_Pictrue_Book">
       <End Role="Book" EntitySet="Book" />
       <End Role="Pictrue" EntitySet="Pictrue" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_User" Association="UsedBookModel.Store.FK_User_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="User1" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Book">
@@ -41,7 +33,7 @@
     <Property Name="Price" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="TotalNum" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
-    <Property Name="Category" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
     <Property Name="Categories" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="BookState" Type="varchar" MaxLength="50" />
     <Property Name="OldPrice" Type="varchar" MaxLength="50" />
@@ -65,7 +57,6 @@
     <Property Name="CommentID" Type="int" Nullable="false" />
     <Property Name="Body" Type="varchar(max)" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
-    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -114,6 +105,7 @@
     <Property Name="StoreName" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="DataTime" Type="datetime" Nullable="false" />
     <Property Name="BookNum" Type="varchar" MaxLength="50" />
+    <Property Name="College" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Book_User">
     <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />
@@ -123,18 +115,6 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="Book">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_User">
-    <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />
-    <End Role="Comment" Type="UsedBookModel.Store.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Comment">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
@@ -160,18 +140,6 @@
       </Principal>
       <Dependent Role="Pictrue">
         <PropertyRef Name="BookID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_User_User">
-    <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />
-    <End Role="User1" Type="UsedBookModel.Store.User" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="User1">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

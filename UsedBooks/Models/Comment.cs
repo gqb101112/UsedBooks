@@ -17,8 +17,5 @@ namespace UsedBooks.Models
         public int CommentID { get; set; }
         public string Body { get; set; }
         public System.DateTime CreateDate { get; set; }
-        public int UserID { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

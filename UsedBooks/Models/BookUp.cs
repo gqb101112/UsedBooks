@@ -23,7 +23,8 @@ namespace UsedBook.Models
         public string Categories { get; set; }
 
         public string OldPrice { get; set; }
-      
+        public string Professional { get; set; }
+        public string Course { get; set; }
 
 
       

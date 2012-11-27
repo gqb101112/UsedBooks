@@ -68,28 +68,8 @@
                         <td width="21%">所属学院</td>
                         <td width="79" colspan="2">
                             <label>
-                                <select id="college1" name="college">
-                                    <option selected="selected" value="">--请选择学院--</option>
-                                    
-                                    <option value="人文学院">人文学院</option>
-                                    <option value="法学院 ">法学院 </option>
-                                    <option value="理学院 ">理学院 </option>
-                                    
-                                    <option value="教育学院 ">教育学院 </option>
-                                    <option value="管理学院 ">管理学院 </option>
-                                    <option value="公共管理学院 ">公共管理学院 </option>
-                                    
-                                    <option value="经济学院">经济学院</option>
-                                    <option value="外国语学院">外国语学院</option>
-                                    
-                                    <option value="环境与资源学院 ">环境与资源学院 </option>
-                                   
-                                    
-                                    <option value="信息工程与科学学院">信息工程与科学学院</option>
-                                    
-                                    <option value="计算机科学与技术学院(软件学院)">计算机科学与技术学院(软件学院)</option>
-                                  
-                                </select>
+                            @Html.DropDownListFor(Model=> Model.College, new SelectList(new string[] {"--请选择学院--", "工商管理学院","旅游与城市管理学院","财务与会计学院","统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院","法学院","人文与传播学院","公共管理学院","外国语学院","日本语言文化学院","艺术设计学院","马克思主义学院","杭州商学院","章乃器学院"}))
+            
                                 便于按学院搜索
                             </label>
                         </td>
