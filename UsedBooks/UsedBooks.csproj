@@ -421,6 +421,8 @@
     <Content Include="Views\Shared\_PagingL.cshtml" />
     <Content Include="Views\Home\College.cshtml" />
     <Content Include="Views\Home\CollegeBookShop.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\_PagingS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -137,7 +137,7 @@ ul{list-style-type:none;}
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="98%" style="border:#FFCC66 dotted 1px; border-top:none; border-left:none;">
-      <form action="search.php?tag=0" method="post">
+       @{Html.BeginForm("Search", "Home", FormMethod.Get, new {target="_blank"});}
         <tr>
 
           <td width="30%"><div align="left">书名关键字：</div></td>
@@ -153,51 +153,6 @@ ul{list-style-type:none;}
         <tr>
           <td><div align="left">出版社关键字：</div></td>
           <td><input name="public" type="text" id="public" value=""/></td>
-        </tr>
-        <!--<tr>
-    <td><div align="left">价格区间：</div></td>
-    <td><input name="price0" type="text" id="price0" value="0" size="5" />
-      ~
-      <input name="price1" type="text" id="price1" value="1000" size="5" />
-      元</td>
-  </tr>
-  -->
-        <tr>
-          <td>新旧程度：</td>
-
-          <td><label>
-            <select name="old_degree0" id="old_degree0">
-              <option value="10">全新</option>
-              <option value="9">九成新</option>
-              <option value="8">八成新</option>
-              <option value="7">七成新</option>
-              <option value="6">六成新</option>
-
-              <option value="5">五成新</option>
-              <option value="4">四成新</option>
-              <option value="3">三成新</option>
-              <option value="2">两成新</option>
-              <option value="1" selected="selected">一成新</option>
-              <option value="0">请选择</option>
-
-            </select>
-            ~
-            <select name="old_degree1" id="old_degree1">
-              <option value="10" selected="selected">全新</option>
-              <option value="9">九成新</option>
-              <option value="8">八成新</option>
-              <option value="7">七成新</option>
-
-              <option value="6">六成新</option>
-              <option value="5">五成新</option>
-              <option value="4">四成新</option>
-              <option value="3">三成新</option>
-              <option value="2">两成新</option>
-              <option value="1">一成新</option>
-
-              <option value="0">请选择</option>
-            </select>
-          </label></td>
         </tr>
         <tr>
           <td>控制条件：</td>
@@ -216,18 +171,14 @@ ul{list-style-type:none;}
             <input type="submit" name="Submit2" value="给我搜" class="button"/>
           </label></td>
         </tr>
-      </form>
+       @{Html.EndForm();}
     </table>
       </td>
     <td>
 	<table width="100%" style="border:#FFCC66 dotted 1px; border-top:none;  border-left:none; border-right:none;">
       <form action="src_shop.php" method="post">
 
-        <tr>
-          <td colspan="2"><label></label>
-            <div align="center" class="highlight">*搜索书店在这里*</div></td>
-          </tr>
-        <tr>
+        
           <td width="30%"><div align="left">店名关键字：</div></td>
           <td width="70%"><input name="shopname" type="text" id="shopname" value=""/></td>
         </tr>
@@ -236,14 +187,7 @@ ul{list-style-type:none;}
           <td><div align="left">店主关键字：</div></td>
           <td><input name="owner" type="text" id="owner" value=""/></td>
         </tr>
-        <!--<tr>
-    <td><div align="left">价格区间：</div></td>
-    <td><input name="price0" type="text" id="price0" value="0" size="5" />
-      ~
-      <input name="price1" type="text" id="price1" value="1000" size="5" />
-      元</td>
-  </tr>
-  -->
+       
         <tr>
           <td>店面说明文字：</td>
           <td><label>
@@ -257,32 +201,7 @@ ul{list-style-type:none;}
           <select name="college" id="college1">
             <option value=""  selected="selected">-全部学院-</option>
 
-            <option value="竺可桢学院">竺可桢学院</option>
-            <option value="人文学院">人文学院</option>
-            <option value="法学院 ">法学院 </option>
-            <option value="理学院 ">理学院 </option>
-            <option value="医学院 ">医学院 </option>
-            <option value="教育学院 ">教育学院 </option>
-
-            <option value="管理学院 ">管理学院 </option>
-            <option value="公共管理学院 ">公管学院 </option>
-            <option value="药学院">药学院</option>
-            <option value="经济学院">经济学院</option>
-            <option value="外国语学院">外国语学院</option>
-            <option value="动物科学学院">动科学院</option>
-
-            <option value="电气工程学院">电气学院</option>
-            <option value="生命科学学院 ">生科学院 </option>
-            <option value="建筑工程学院 ">建工学院 </option>
-            <option value="环境与资源学院 ">环资学院 </option>
-            <option value="材料与化工学院 ">材化学院 </option>
-            <option value="机械与能源工程学">机能学院</option>
-
-            <option value="信息工程与科学学院">信息学院</option>
-            <option value="生物系统工程与食品科学学院 ">生工食品学院 </option>
-            <option value="计算机科学与技术学院(软件学院)">计算机、软件学院</option>
-            <option value="生物医学工程与仪器科学学院 ">生仪学院 </option>
-            <option value="农业与生物技术学院">农生学院</option>
+            
           </select>
 
           </label></td>

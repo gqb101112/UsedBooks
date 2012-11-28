@@ -242,6 +242,29 @@ namespace UsedBooks.Controllers
             return View(shops);
 
         }
+
+        public ActionResult Search(int page=1 )
+        {
+            string title = Request.Form["title"];
+            string author = Request.Form["author"];
+            string publish = Request.Form["publish"];
+            string mark = Request.Form["mark"];
+            var books = from b in Usedb.Book
+                        orderby b.BookID ascending 
+                        select b;
+            if (!String.IsNullOrEmpty(title))
+            {
+                books = books.Where(b =>
+                b.Name.ToUpper().Contains(title.ToUpper())
+                || b.Author.ToUpper().Contains(
+                author.ToUpper())||b.Publish.ToUpper().Contains(publish.ToUpper())).OrderBy(b=>b.BookID);
+            }
+
+
+            int maxRecords = 18;
+            var currentPage = page <= 0 ? 1 : page;
+            return View(books.ToPagedList(currentPage,maxRecords));
+        }
     }
    
 
