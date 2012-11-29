@@ -22,7 +22,7 @@ namespace UsedBooks.Controllers
             const int maxRecords = 18;// 每页最大数目
             ViewBag.Message = "欢迎!";
             var books = from book in Usedb.Book
-                        orderby book.BookID ascending 
+                        orderby book.BookID descending
                         select book;
             var currentPage = page <= 0 ? 1 : page;
 
@@ -124,7 +124,7 @@ namespace UsedBooks.Controllers
             ViewBag.CurrentSortOrder = sortOrder;
             const int maxRecords = 18;// 每页最大数目
             var booksN = from book in Usedb.BookNeed
-                         orderby book.BookNID ascending
+                         orderby book.BookNID descending
                          select book;
             var currentPage = page <= 0 ? 1 : page;
             return PartialView (booksN.ToPagedList(currentPage, maxRecords));
@@ -242,9 +242,10 @@ namespace UsedBooks.Controllers
             return View(shops);
 
         }
-
-        public ActionResult Search(int page=1 )
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Search( )
         {
+            int page = 1;
             string title = Request.Form["title"];
             string author = Request.Form["author"];
             string publish = Request.Form["publish"];
@@ -252,15 +253,14 @@ namespace UsedBooks.Controllers
             var books = from b in Usedb.Book
                         orderby b.BookID ascending 
                         select b;
-            if (!String.IsNullOrEmpty(title))
-            {
+            
                 books = books.Where(b =>
                 b.Name.ToUpper().Contains(title.ToUpper())
                 || b.Author.ToUpper().Contains(
                 author.ToUpper())||b.Publish.ToUpper().Contains(publish.ToUpper())).OrderBy(b=>b.BookID);
-            }
+          
 
-
+            
             int maxRecords = 18;
             var currentPage = page <= 0 ? 1 : page;
             return View(books.ToPagedList(currentPage,maxRecords));
