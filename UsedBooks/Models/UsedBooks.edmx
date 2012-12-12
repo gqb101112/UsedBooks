@@ -6,6 +6,7 @@
     <edmx:StorageModels>
       <Schema Namespace="UsedBookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="UsedBookModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="UsedBookModel.Store.Admin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Book" EntityType="UsedBookModel.Store.Book" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BookNeed" EntityType="UsedBookModel.Store.BookNeed" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Comment" EntityType="UsedBookModel.Store.Comment" store:Type="Tables" Schema="dbo" />
@@ -26,6 +27,14 @@
             <End Role="Pictrue" EntitySet="Pictrue" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
@@ -111,6 +120,7 @@
           <Property Name="DataTime" Type="datetime" Nullable="false" />
           <Property Name="BookNum" Type="varchar" MaxLength="50" />
           <Property Name="College" Type="varchar" MaxLength="50" />
+          <Property Name="BookSold" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Book_User">
           <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />
@@ -185,6 +195,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="UsedBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UsedBookEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="UsedBookModel.Admin" />
           <EntitySet Name="Book" EntityType="UsedBookModel.Book" />
           <EntitySet Name="BookNeed" EntityType="UsedBookModel.BookNeed" />
           <EntitySet Name="Comment" EntityType="UsedBookModel.Comment" />
@@ -235,6 +246,14 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
@@ -324,6 +343,7 @@
           <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BookNum" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="College" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BookSold" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
           <NavigationProperty Name="Book" Relationship="UsedBookModel.FK_Book_User" FromRole="User" ToRole="Book" />
           <NavigationProperty Name="Order" Relationship="UsedBookModel.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
@@ -380,6 +400,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="UsedBookModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="UsedBookModel.Book">
               <MappingFragment StoreEntitySet="Book">
@@ -470,6 +499,7 @@
                 <ScalarProperty Name="DataTime" ColumnName="DataTime" />
                 <ScalarProperty Name="BookNum" ColumnName="BookNum" />
                 <ScalarProperty Name="College" ColumnName="College" />
+                <ScalarProperty Name="BookSold" ColumnName="BookSold" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,170 @@
+﻿@model UsedBooks.Models.Orders
+           
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
+    
+
+}
+
+
+<script type="text/javascript">
+    var headTitle = document.getElementById("myshop");
+    headTitle.currentStyle = "current";
+    headTitle.className = "current";
+</script>
+
+<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("Order", "Home", FormMethod.Post))
+{
+    
+    <div id="left">
+        <div class="left_box">
+            <h3>
+                <a id="adb" name="adb"></a>
+                详细信息
+           @{     if (TempData["phone"] != null)
+                  {
+                    <span style:"color:#D30A00; font-size:larger">预订成功，请尽快联系卖家。卖家手机号码 @TempData["phone"]</span>
+                    @Html.ActionLink("返回", "Index", "Home");
+                  }
+            }
+            </h3>
+            <span class="float_right">
+                <img alt="" src="../../Content/images/back.gif">
+
+                @Html.ActionLink("返回首页", "Index", "Home")
+            </span>
+        </div>
+
+        <table width="100%" style="border: #FFCC66 dotted 1px; border-top: none;">
+            <tbody>
+                <tr>
+                    <td width="11%">书名：</td>
+                    <td width="43%">@Html.DisplayFor(m=>m.Name)</td>
+                    <td width="7%">原价：</td>
+                    <td width="18%">元</td>
+                    <td width="21%" rowspan="5">
+                        <div class="book_frame" style="">
+                            <div class="book_author">@Html.DisplayFor(m=>m.Author) 著 
+
+                            </div>
+                            <div class="book_text">
+                                <img width="16" height="11" src="../../Content/images/head_06.gif" style="float: right; margin-bottom: 20px;" />
+                            </div>
+
+                            <div class="book_title">
+                                @Html.DisplayFor(m=>m.Author)
+                            </div>
+                            <div class="book_title">
+                                 @Html.DisplayFor(m=>m.Publish)   出版社
+                            </div>
+                            <div class="book_price">
+                                <div class="before">@Html.DisplayFor(m=>m.OldPrice)元</div>
+                                <div class="now"> @Html.DisplayFor(m=>m.Price) 元</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>作者：</td>
+                    <td> @Html.DisplayFor(m=>m.Author)</td>
+                    <td>现价：</td>
+                    <td> @Html.DisplayFor(m=>m.Price)</td>
+
+
+
+                </tr>
+                <tr>
+
+                    <td>出版社：</td>
+                    <td> @Html.DisplayFor(m=>m.Publish)</td>
+                    <td>新旧：</td>
+                    <td> @Html.DisplayFor(m=>m.OldLevel)</td>
+
+                </tr>
+                <tr>
+                    <td>该书来自：</td>
+                    <td> @Html.DisplayFor(m=>m.Author) 的书店</td>
+                    <td>书主：</td>
+                    <td> @Html.DisplayFor(m=>m.Author)</td>
+                </tr>
+                <tr>
+
+                    <tr>
+                        <td>附加信息：</td>
+                        <td colspan="3">没啥多余信息</td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td colspan="2" >
+                        <div class="bshare-custom" >
+                            
+                   <wb:share-button count="n" appkey="浙工商二手淘书网" type="button" url=@Request.Url.ToString() title="浙工商二手淘书网 - 本站专门为浙工商学生提供求购与发布二手书籍信息的平台注册后均可以在本站开店卖书，同时提供各种搜索方式为用户找到需要的二手书籍信息"+@Request.Url.ToString()   size="small"></wb:share-button>
+                           
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clear_height">
+        </div>
+
+        <div class="left_box">
+            <h3>
+                <a id="adb" name="adb"></a>
+                预定该书
+            </h3>
+            <span class="float_right">
+                <img alt="" src="../../Content/images/sendmail.gif">
+                <a href="">向书主发站内消息</a>
+            </span>
+            <div class="notes">
+                如果您有意要购买该书，您只要点击
+            <strong class="highlight">确认预定</strong>
+                就可以看到书主
+            <strong class="highlight">
+                书主
+                的联系方式
+            </strong>
+                了
+            </div>
+        </div>
+
+
+        <table width="100%" border="0">
+            <tbody>
+                <tr>
+                    <td width="10%">预订者</td>
+                    <td width="33%">
+                        <label>
+                            <input id="user" type="text" value="网购" name="user">
+                        </label>
+                    </td>
+                    <td width="11%">联系方式</td>
+                    <td width="46%">
+                        @Html.TextBoxFor(m => m.phone)
+                        建议填写手机长号
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <label>
+                            <input type="hidden" value="7654" name="msgtoid">
+                            <input type="hidden" value="12950" name="bid">
+                        </label>
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="确认预定" name="Submit22">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p></p>
+    </div>
+    
+    }

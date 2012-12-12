@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="UsedBookModelStoreContainer" CdmEntityContainer="UsedBookEntities1">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="UsedBookModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Book">
       <EntityTypeMapping TypeName="UsedBookModel.Book">
         <MappingFragment StoreEntitySet="Book">
@@ -91,6 +100,7 @@
           <ScalarProperty Name="DataTime" ColumnName="DataTime" />
           <ScalarProperty Name="BookNum" ColumnName="BookNum" />
           <ScalarProperty Name="College" ColumnName="College" />
+          <ScalarProperty Name="BookSold" ColumnName="BookSold" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

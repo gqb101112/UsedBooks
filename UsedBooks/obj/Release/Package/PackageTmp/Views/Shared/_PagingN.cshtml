@@ -1,0 +1,45 @@
+﻿
+<p>
+    @if (Model.HasPreviousPage)
+    {
+        @Ajax.ActionLink("<< 首页", "BookNeedShow", new
+   {
+       page = 1,
+       sortOrder = ViewBag.CurrentSortOrder
+   }, new AjaxOptions { UpdateTargetId="bookneed_show"})
+        @Html.Raw("&nbsp;");
+        @Ajax.ActionLink("< 上一页", "BookNeedShow", new
+   {
+       page = Model.PageNumber - 1,
+       sortOrder =
+           ViewBag.CurrentSortOrder
+   }, new AjaxOptions { UpdateTargetId="bookneed_show"})
+    }
+    else
+    {
+        @:<< 首页
+        @Html.Raw("&nbsp;");
+        @:< 上一页
+    }
+    &nbsp;&nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Ajax.ActionLink("下一页 >", "BookNeedShow", new
+   {
+       page = Model.PageNumber + 1,
+       sortOrder = ViewBag.CurrentSortOrder
+   }, new AjaxOptions { UpdateTargetId="bookneed_show"})
+        @Html.Raw("&nbsp;");
+        @Ajax.ActionLink("末页 >>", "BookNeedShow", new
+   {
+       page = Model.PageCount,
+       sortOrder = ViewBag.CurrentSortOrder
+   }, new AjaxOptions { UpdateTargetId="bookneed_show"})
+    }
+    else
+    {
+        @:下一页 >
+        @Html.Raw("&nbsp;")
+        @:末页 >>
+    }
+</p>

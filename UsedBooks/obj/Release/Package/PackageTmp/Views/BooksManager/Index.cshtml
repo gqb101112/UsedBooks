@@ -1,0 +1,87 @@
+﻿@model IEnumerable<UsedBooks.Models.Book>
+
+@{
+    
+    Layout = "";
+}
+
+
+
+
+<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+<div class="left_box">
+     <h3>
+      <a id="allbooks" name="allbooks"></a>
+      我的最新藏书
+      </h3>
+      
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+     	<tbody>
+             <tr>
+                 <td bgcolor="#FFFF66">
+                     <div class="notes">郑重说明：为了不产生误导信息，请及时将已经成交的被预定书籍状态修改为“已售”，否则系统会在书籍被预定后一段时间内自动转为“已售”状态。作为店长，这是您的权利也是您的责任，谢谢您的配合。</div>
+                 </td>
+             </tr>
+             <tr>
+                <td colspan="2">
+                    @foreach (var book in Model)
+                    { 
+                        <div class="book_frame_large">
+                            <div class="book_frame">
+                                <div class="book_author">@book.Author 著</div>
+                                <div class="book_text">
+                                    <img width="16" height="11" src="../../Content/images/head_06.gif" style="float: right; margin-bottom: 20px;" /></div>
+                                <div class="book_title">
+                                 <a href="@Url.Action("Order","Home", new { id = book.BookID })">@book.Name</a>  
+                                </div>
+                                <div class="book_title">
+                                    @book.Publish  出版社
+                                </div>
+                                <div class="book_price">
+                                    <div class="before">@book.OldPrice 元</div>
+                                    <div class="now">@book.Price 元</div>
+                                </div>
+                            </div>
+  
+                            <div class="book_note">
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                           @using (Html.BeginForm("BookStateChange", "BooksManager", new { bid = book.BookID }, FormMethod.Post))
+                                           {
+                                       <tr>
+                                            <td>
+                                              
+                                                <select id="tag" name="tag" >
+                                                    <option value="0"  selected="selected" >待售</option>
+                                                    
+                                                    <option value="1">已售</option>
+                                                </select>
+                                                 
+                                            </td>
+                                           <td style="padding-top: 5px;">
+                                              <input type="submit" class="button"
+                                                   value="GO" name="Submit3" src="../../Content/images/go.gif">
+                                              
+                                           </td>
+                                        </tr>
+                                           }   
+                                        </tbody>
+                                </table>
+                                @Html.ActionLink("删除", "Delete", new { id=book.BookID }, new {onclick="{if(confirm('确定要删除该书？')){return true;}return false;}" })
+                                @Html.ActionLink("编辑", "Edit", new { id = book.BookID })|
+                                @Html.ActionLink("查看", "Edit", new { id=book.BookID })|
+                               
+                            </div>
+   
+                        </div>
+                    }
+                    
+                    
+                </td>
+          </tr>
+          <tr>
+          </tr>
+      </tbody>
+       </table>
+        </div>
+<script type="text/javascript"></script>

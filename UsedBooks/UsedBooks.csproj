@@ -115,11 +115,15 @@
     <Compile Include="Controllers\ChildActionController.cs" />
     <Compile Include="Controllers\GetValidateCodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\ValidateCode.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>UsedBooks.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Book.cs">
       <DependentUpon>UsedBooks.tt</DependentUpon>
     </Compile>
@@ -176,6 +180,9 @@
   <ItemGroup>
     <Content Include="Common\LoginOut.ascx" />
     <Content Include="Content\css.css" />
+    <Content Include="Content\css\invalid.css" />
+    <Content Include="Content\css\reset.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\images\A.gif" />
     <Content Include="Content\images\B.gif" />
     <Content Include="Content\images\back.gif" />
@@ -183,6 +190,7 @@
     <Content Include="Content\images\bgshade.gif" />
     <Content Include="Content\images\book1.gif" />
     <Content Include="Content\images\book2.gif" />
+    <Content Include="Content\images\book3.gif" />
     <Content Include="Content\images\c.gif" />
     <Content Include="Content\images\circle.gif" />
     <Content Include="Content\images\comment.gif" />
@@ -197,6 +205,39 @@
     <Content Include="Content\images\head_06.gif" />
     <Content Include="Content\images\HeinH17.jpg" />
     <Content Include="Content\images\i.gif" />
+    <Content Include="Content\images\images\b.png" />
+    <Content Include="Content\images\images\bg-body.gif" />
+    <Content Include="Content\images\images\bg-button-green.gif" />
+    <Content Include="Content\images\images\bg-content-box.gif" />
+    <Content Include="Content\images\images\bg-form-field.gif" />
+    <Content Include="Content\images\images\bg-login-top.png" />
+    <Content Include="Content\images\images\bg-login.gif" />
+    <Content Include="Content\images\images\bg-menu-item-current.gif" />
+    <Content Include="Content\images\images\bg-menu-item-green.gif" />
+    <Content Include="Content\images\images\bg-radial-gradient.gif" />
+    <Content Include="Content\images\images\bg-sidebar.gif" />
+    <Content Include="Content\images\images\bl.png" />
+    <Content Include="Content\images\images\br.png" />
+    <Content Include="Content\images\images\icons\bullet_black.png" />
+    <Content Include="Content\images\images\icons\clock_48.png" />
+    <Content Include="Content\images\images\icons\comment_48.png" />
+    <Content Include="Content\images\images\icons\cross.png" />
+    <Content Include="Content\images\images\icons\cross_circle.png" />
+    <Content Include="Content\images\images\icons\cross_grey_small.png" />
+    <Content Include="Content\images\images\icons\exclamation.png" />
+    <Content Include="Content\images\images\icons\hammer_screwdriver.png" />
+    <Content Include="Content\images\images\icons\image_add_48.png" />
+    <Content Include="Content\images\images\icons\information.png" />
+    <Content Include="Content\images\images\icons\jquery.wysiwyg.gif" />
+    <Content Include="Content\images\images\icons\paper_content_pencil_48.png" />
+    <Content Include="Content\images\images\icons\pencil.png" />
+    <Content Include="Content\images\images\icons\pencil_48.png" />
+    <Content Include="Content\images\images\icons\tick_circle.png" />
+    <Content Include="Content\images\images\logo.png" />
+    <Content Include="Content\images\images\menu-current-arrow.gif" />
+    <Content Include="Content\images\images\shortcut-button-bg.gif" />
+    <Content Include="Content\images\images\tl.png" />
+    <Content Include="Content\images\images\tr.png" />
     <Content Include="Content\images\img10_.gif" />
     <Content Include="Content\images\j.gif" />
     <Content Include="Content\images\k.gif" />
@@ -221,6 +262,7 @@
     <Content Include="Content\images\u.gif" />
     <Content Include="Content\images\x.gif" />
     <Content Include="Content\images\z.gif" />
+    <Content Include="Content\jquery-ui-1.9.2.custom.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -295,15 +337,24 @@
       <DependentUpon>UsedBooks.edmx</DependentUpon>
       <LastGenOutput>UsedBooks.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\UsedBooks.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery-ui-1.9.2.custom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\scripts\facebox.js" />
+    <Content Include="Scripts\scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\scripts\jquery.date.js" />
+    <Content Include="Scripts\scripts\jquery.datePicker.js" />
+    <Content Include="Scripts\scripts\jquery.wysiwyg.js" />
+    <Content Include="Scripts\scripts\simpla.jquery.configuration.js" />
     <Content Include="Scripts\slidePlayer.js" />
     <Content Include="Content\images\081106122638.jpg" />
     <Content Include="Content\images\101104102747.jpg" />
@@ -423,6 +474,10 @@
     <Content Include="Views\Home\CollegeBookShop.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\_PagingS.cshtml" />
+    <Content Include="Views\Home\Indexs.cshtml" />
+    <Content Include="Views\BooksManager\IndexBookSold.cshtml" />
+    <Content Include="Views\UserAdmin\ALogin.cshtml" />
+    <Content Include="Views\UserAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

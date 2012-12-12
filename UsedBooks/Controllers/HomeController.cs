@@ -22,6 +22,7 @@ namespace UsedBooks.Controllers
             const int maxRecords = 18;// 每页最大数目
             ViewBag.Message = "欢迎!";
             var books = from book in Usedb.Book
+                        where book.BookState=="true"
                         orderby book.BookID descending
                         select book;
             var currentPage = page <= 0 ? 1 : page;
@@ -264,6 +265,11 @@ namespace UsedBooks.Controllers
             int maxRecords = 18;
             var currentPage = page <= 0 ? 1 : page;
             return View(books.ToPagedList(currentPage,maxRecords));
+        }
+
+        public ActionResult Indexs()
+        {
+            return View();
         }
     }
    

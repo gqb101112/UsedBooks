@@ -1,0 +1,95 @@
+﻿@model UsedBooks.Models.User
+
+@{
+   
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
+}
+
+<div id="left">
+    <a id="begin" name="begin"></a>
+    <div class="left_articles">
+        <h3>书店设置</h3>
+        @using (Html.BeginForm("PersonalEdit", "BooksManager", FormMethod.Post))
+        {
+            <table width="98%" border="0">
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <div align="center">亲爱的gqb，您已经拥有帐号gqb，现在您可以个性化您自己的书店了（带*为必填项）</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*书店名字</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.StoreName)
+                                您可以再修改突出您的特色
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width="21%">*书店店主</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.UserName)
+                                
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*店主手机</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.Phone)
+                                若有人预订您的书籍，我们会以短信方式通知您
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">*店主Email</td>
+                        <td width="79" colspan="2">
+                            <label>
+                                @Html.EditorFor(Model=>Model.email)
+                               
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width="21%">*书店广告词</td>
+                        <td width="79" colspan="2">
+                            <label>
+                               <input id="adv" type="text" value="" name="adv">
+限制50个汉字字符
+                               
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%">所属学院</td>
+                        <td width="79" colspan="2">
+                            <label>
+                            @Html.DropDownListFor(Model=> Model.College, new SelectList(new string[] {"--请选择学院--", "工商管理学院","旅游与城市管理学院","财务与会计学院","统计与数学学院","经济学院","金融学院","食品与生物工程学院","环境科学与工程学院","信息与电子工程学院","计算机与信息工程学院","法学院","人文与传播学院","公共管理学院","外国语学院","日本语言文化学院","艺术设计学院","马克思主义学院","杭州商学院","章乃器学院"}))
+            
+                                便于按学院搜索
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div align="center">
+                                <input class="button" type="submit" value="设置完成" name="Submit22">
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div align="center">
+                                <input class="button" type="reset" value="重新设置" name="Submit22">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

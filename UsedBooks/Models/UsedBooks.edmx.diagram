@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d2242dd130434a4c8442acedaf1d4416" Name="关系图1">
+      <Diagram DiagramId="e9afcdee2b324fb891ee0c4ea0207b02" Name="关系图1">
+        <EntityTypeShape EntityType="UsedBookModel.Admin" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UsedBookModel.Book" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsedBookModel.BookNeed" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsedBookModel.Comment" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsedBookModel.BookNeed" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsedBookModel.Comment" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UsedBookModel.Order" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="UsedBookModel.Pictrue" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsedBookModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsedBookModel.User" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsedBookModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UsedBookModel.User" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="UsedBookModel.FK_Book_User" ManuallyRouted="false" />
         <AssociationConnector Association="UsedBookModel.FK_Pictrue_Book" ManuallyRouted="false" />
         <AssociationConnector Association="UsedBookModel.FK_Order_User" ManuallyRouted="false" />

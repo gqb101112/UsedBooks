@@ -1,24 +1,15 @@
 ﻿@model IEnumerable<UsedBooks.Models.Book>
 
 @{
-    ViewBag.Title = "Index";
+    
     Layout = "";
 }
 
 
 
-<script type="text/javascript">
-    var select = document.getElementById("tag");
-    var val = select.options[select.selectedIndex].value;
-    function change(ele) {
-        val = $(ele).val();
-        
-    }
-    function val() {
-        return val;
-    }
-</script>
+
 <link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
+<div class="left_box">
      <h3>
       <a id="allbooks" name="allbooks"></a>
       我的最新藏书
@@ -51,28 +42,29 @@
                                     <div class="now">@book.Price 元</div>
                                 </div>
                             </div>
-   @using (Html.BeginForm("BookStateChange", "BooksManager", FormMethod.Post))
-    {
+  
                             <div class="book_note">
                                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
                                     <tbody>
-
+                                           @using (Html.BeginForm("BookStateChange", "BooksManager", new { bid = book.BookID }, FormMethod.Post))
+                                           {
                                        <tr>
                                             <td>
-                                                <select id="tag" name="tag" onchange="change(this)">
-                                                    <option selected="selected" value="0">待售</option>
+                                              
+                                                <select id="tag" name="tag" >
+                                                    <option value="0"  selected="selected" >待售</option>
                                                     
                                                     <option value="1">已售</option>
                                                 </select>
-                                                
+                                                 
                                             </td>
                                            <td style="padding-top: 5px;">
-                                              <!-- <input type="submit" class="button"
-                                                   value="GO" name="Submit3" >-->
-                                               @Html.ActionLink("Go","BookStateChange",new { bid = book.BookID })
+                                              <input type="submit" class="button"
+                                                   value="GO" name="Submit3" src="../../Content/images/go.gif">
+                                              
                                            </td>
                                         </tr>
-                                   
+                                           }   
                                         </tbody>
                                 </table>
                                 @Html.ActionLink("删除", "Delete", new { id=book.BookID }, new {onclick="{if(confirm('确定要删除该书？')){return true;}return false;}" })
@@ -80,7 +72,7 @@
                                 @Html.ActionLink("查看", "Edit", new { id=book.BookID })|
                                
                             </div>
-   }
+   
                         </div>
                     }
                     
@@ -91,5 +83,5 @@
           </tr>
       </tbody>
        </table>
-        
+        </div>
 <script type="text/javascript"></script>

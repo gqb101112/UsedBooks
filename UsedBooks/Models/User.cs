@@ -31,6 +31,7 @@ namespace UsedBooks.Models
         public System.DateTime DataTime { get; set; }
         public string BookNum { get; set; }
         public string College { get; set; }
+        public string BookSold { get; set; }
     
         public virtual ICollection<Book> Book { get; set; }
         public virtual ICollection<Order> Order { get; set; }

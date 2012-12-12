@@ -1,0 +1,48 @@
+﻿<p>
+    @if (Model.HasPreviousPage)
+    {
+        @Ajax.ActionLink("<< 首页", "LibrarySearch", new
+   {
+       page = 1,
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
+   }, new AjaxOptions {UpdateTargetId="book_show" })
+        @Html.Raw("&nbsp;");
+        @Ajax.ActionLink("< 上一页", "LibrarySearch", new
+   {
+       page = Model.PageNumber - 1,
+       sortOrder =
+           ViewBag.CurrentSortOrder,
+           searchID=ViewBag.SearchType
+   }, new AjaxOptions { UpdateTargetId="book_show"})
+    }
+    else
+    {
+        @:<< 首页
+        @Html.Raw("&nbsp;");
+        @:< 上一页
+    }
+    &nbsp;&nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Ajax.ActionLink("下一页 >", "LibrarySearch", new
+   {
+       page = Model.PageNumber + 1,
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
+   }, new AjaxOptions { UpdateTargetId="book_show"})
+        @Html.Raw("&nbsp;");
+        @Ajax.ActionLink("末页 >>", "LibrarySearch", new
+   {
+       page = Model.PageCount,
+       sortOrder = ViewBag.CurrentSortOrder,
+       searchID=ViewBag.SearchType
+   }, new AjaxOptions { UpdateTargetId="book_show"})
+    }
+    else
+    {
+        @:下一页 >
+        @Html.Raw("&nbsp;")
+        @:末页 >>
+    }
+</p>

@@ -1,0 +1,54 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_HomePage1.cshtml";
+}
+<script type="text/javascript">
+    var headTitle = document.getElementById("college");
+    headTitle.currentStyle = "current";
+    headTitle.className = "current";
+</script>
+
+<div class="subheader" >
+    <p>
+        <span><img height="13" width="12" src="../../Content/images/notice.gif"/></span>
+        点进相应学院进入您的专业，看看学长们的书籍，淘书更有针对性！
+    </p>
+</div>
+
+<div class="left_articles">
+    <h3>学院模式</h3>
+    <div class="thirds">
+        <p class="title">
+            <img height="13" width="12" src="../../Content/images/notice.gif"/>
+            <a href="#">下沙校区</a>
+            <br/>
+        </p>
+        <p>
+            <a href="#" target="_blank">工商管理学院</a><br>
+             <a href="#" target="_blank">经济学院</a><br>
+             <a href="#" target="_blank">金融学院</a><br>
+             <a href="#" target="_blank">统计与数学学院</a><br>
+             <a href="@Url.Action("CollegeBookShop", new {collegeType="财务与会计学院",sortOrder="" })" target="_blank">财务与会计学院</a><br>
+             <a href="#" target="_blank">旅游与城市管理学院 </a><br>
+             <a href="#" target="_blank">法学院</a><br>
+             <a href="#" target="_blank">人文与传播学院</a><br>
+             <a href="#" target="_blank">公共管理学院</a><br>
+             <a href="#" target="_blank">外国语学院 </a><br>
+            <a href="#" target="_blank">日本语言与文化学院 </a><br>
+            <a href="#" target="_blank">艺术设计学院 </a><br>
+            <a href="#" target="_blank">食品与生物工程学院</a><br>
+            <a href="#" target="_blank">环境科学与工程学院</a><br>
+            <a href="#" target="_blank">信息与电子工程学院</a><br>
+            <a href="#" target="_blank">计算机与信息工程学院</a><br>
+
+             
+        </p>
+    </div>
+    <div class="thirds">
+        <p class="title">
+            <img height="13" width="12" src="../../Content/images/notice.gif"/>
+            <a href="#">教工路校区</a>
+            <br/>
+        </p>
+        </div>
+</div>

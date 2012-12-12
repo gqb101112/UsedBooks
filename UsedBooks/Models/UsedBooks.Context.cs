@@ -28,6 +28,7 @@ namespace UsedBooks.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Admin> Admin { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<BookNeed> BookNeed { get; set; }
         public DbSet<Comment> Comment { get; set; }

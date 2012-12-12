@@ -1,0 +1,28 @@
+﻿@if(Request.IsAuthenticated) {
+    
+    <text>
+        <p>
+                            
+                            @Html.ActionLink("开书店","Register","Admin") | 
+				<a href="">加入收藏</a>|
+				<a href="">联系我们</a>
+        </p>
+        <br />
+    @Html.ActionLink(   @User.Identity.Name,"PersonalShop","BooksManager")您好 
+      <span id="loginbutton">@Html.ActionLink("进入我的书店","PersonalShop","") </span>
+       </text> 
+    @:[ @Html.ActionLink("退出", "Logout", "Admin") ]
+}
+else {
+    <text>
+        <p>
+                            @Html.ActionLink("登入","Login","Admin") |
+                            @Html.ActionLink("开书店","Register","Admin") | 
+				
+				<a href="">联系我们</a>
+        </p>
+        <br />
+      <span id="loginbutton">@Html.ActionLink("快速注册","Register","Admin") </span><b>立即 注册，拥有e店</b>
+       </text> 
+    @:[ @Html.ActionLink("登录", "Login", "Admin") ]
+}

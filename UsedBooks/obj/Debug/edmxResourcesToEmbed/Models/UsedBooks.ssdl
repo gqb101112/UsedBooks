@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="UsedBookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="UsedBookModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="UsedBookModel.Store.Admin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Book" EntityType="UsedBookModel.Store.Book" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BookNeed" EntityType="UsedBookModel.Store.BookNeed" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comment" EntityType="UsedBookModel.Store.Comment" store:Type="Tables" Schema="dbo" />
@@ -21,6 +22,14 @@
       <End Role="Pictrue" EntitySet="Pictrue" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Book">
     <Key>
       <PropertyRef Name="BookID" />
@@ -106,6 +115,7 @@
     <Property Name="DataTime" Type="datetime" Nullable="false" />
     <Property Name="BookNum" Type="varchar" MaxLength="50" />
     <Property Name="College" Type="varchar" MaxLength="50" />
+    <Property Name="BookSold" Type="nchar" MaxLength="10" />
   </EntityType>
   <Association Name="FK_Book_User">
     <End Role="User" Type="UsedBookModel.Store.User" Multiplicity="1" />

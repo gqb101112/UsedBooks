@@ -1,0 +1,77 @@
+﻿@model IEnumerable<UsedBooks.Models.User>
+           @{
+               Layout = "~/Views/Shared/_HomePage1.cshtml";
+           }
+
+<script type="text/javascript">
+    var headTitle = document.getElementById("myshop");
+    headTitle.currentStyle = "current";
+    headTitle.className = "current";
+</script>
+
+@foreach (var user in Model)
+{          
+    <div align="center">
+        <img width="635" height="120" align="middle" alt="" src="../Content/images/banner.jpg">
+    </div>
+
+    <div class="left_box">
+        <h3>
+            <a id="basic" name="basic"></a>
+                @user.UserName 的书店 店基本信息
+        </h3>
+        <span class="float_right">
+            @Html.ActionLink("点此修改本店信息","PersonalEdit","BooksManager")
+            
+        </span>
+        <div class="notes">点击右侧修改本店信息--></div>
+    </div>
+    <table width="100%" style="border: #FFCC66 dotted 1px; border-top: none;">
+        <tbody>
+            <tr>
+                <td width="9%">店名：</td>
+                <td width="36%">@user.UserName 的书店</td>
+                <td width="10%">店长：</td>
+                <td width="45%">@user.UserName</td>
+            </tr>
+            <tr>
+                <td>藏书：</td>
+                <td>@user.BookNum 本</td>
+                <td>成交：</td>
+                <td>@user.BookSold 本</td>
+            </tr>
+            <tr>
+            <td>口号：</td>
+            <td></td>
+            <td>联系方式：</td>
+            <td>@user.Phone</td>
+                </tr>
+            <tr>
+                <td>学院：</td>
+                <td>@user.College</td>
+                <td>E-mail：</td>
+                <td>@user.email</td>
+            </tr>
+            <tr>
+                <td>创建人：</td>
+                <td>@user.UserName</td>
+                <td>创建日期：</td>
+                <td>@user.DataTime</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clear_height"></div>
+    @Html.Action("Create","BooksManager")
+    
+    <div class="clear_height"></div>
+    
+   
+   
+    @Html.Action("Index","BooksManager")
+     <div class="clear_height"></div>
+    @Html.Action("IndexBookSold","BooksManager")
+<p> </p>
+    @Html.Action("MyBookOrder","BooksManager")
+    <p> </p>
+<p></p>
+}

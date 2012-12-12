@@ -8,13 +8,16 @@
 	<title>二手书交易平台</title>
     
 	<link href="@Url.Content("~/Content/css.css")" rel="stylesheet" type="text/css" />
-    
+   
     <script src="../../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery-1.4.4.min.js"type="text/javascript"></script>
 
     <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui-1.8.20.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui-1.9.2.custom.js" type="text/javascript"></script>
     
     <style> 
 body,div,ul,li{margin:0;padding:0;}
@@ -126,11 +129,10 @@ ul{list-style-type:none;}
   </tr>
 </table>	    
         <div class="left_articles" id="book_show">
-			
-           
-            @RenderBody()
+            
+           @RenderBody()
 	</div>
-        
+         
         <div class="left_articles">
   <h3>高级搜索</h3>
   <div class="notes">说明：左边搜索书籍，右边搜索书店</div>

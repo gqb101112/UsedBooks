@@ -12,7 +12,7 @@ namespace UsedBooks.Controllers
     public class BooksManagerController : Controller
     {
         UsedBookEntities1 Usedb = new UsedBookEntities1();
-      
+        
         
         [Authorize]
         public ActionResult Index()
@@ -21,9 +21,27 @@ namespace UsedBooks.Controllers
             
             int Uid =Convert.ToInt32( Session["Uid"]);
             var books = from b in Usedb.Book
-                        where b.UserID==Uid
+                        where b.UserID==Uid && b.BookState=="true"
                         select b;
+            
             return View(books.ToList());
+        }
+        [Authorize]
+        public ActionResult IndexBookSold()
+        {
+
+
+            int Uid = Convert.ToInt32(Session["Uid"]);
+            var books = from b in Usedb.Book
+                        where b.UserID == Uid && b.BookState == "false"
+                        select b;
+            
+            User user = Usedb.User.Find(Session["Uid"]);
+            user.BookSold = books.Count()+"";
+           
+            Usedb.SaveChanges();
+            return View(books.ToList());
+          
         }
 
         public ActionResult BookSold()
@@ -201,10 +219,14 @@ namespace UsedBooks.Controllers
         }
 
         [Authorize]
-       
-        public ActionResult BookStateChange(int id,int bid)//id=0表示 待售BookState=true   id=1 表示 已售  bid表示书本ID
-        { 
+        [HttpPost]
+        public ActionResult BookStateChange(int bid)//id=0表示 待售BookState=true   id=1 表示 已售  bid表示书本ID
+        {
+            
+           
             Book book = Usedb.Book.Find(bid);
+            int id =int.Parse(Request.Form["tag"]);
+            
             if (id == 0)
                 book.BookState = "true";
             else
@@ -213,6 +235,8 @@ namespace UsedBooks.Controllers
 
             return RedirectToAction("PersonalShop");
         }
+        
+       
 
         [Authorize]
         public ActionResult MyBookOrder()
